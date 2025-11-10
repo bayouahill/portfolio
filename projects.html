@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects — Alex Hill</title>
+  <link rel="stylesheet" href="styles/project.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <div class="logo">
+        <img src="/images/Hill, Alex - Copy.jpg" alt="Image of Alex Hill" class="logo">
+      </div>
+      <div><div style="font-weight:800">Alex Hill</div><div style="color:var(--muted);font-size:13px">Project Portfolio</div></div>
+    </div>
+    <nav class="nav" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html" class="active">Projects</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2 style="margin-top:0">All projects</h2>
+      <p class="lead">Short sentence on how you choose projects. Filter with the search box.</p>
+
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <input id="searchInput" data-filter-input type="search" placeholder="search projects" style="padding:8px;border-radius:8px;background:transparent;border:1px solid var(--border);color:var(--muted);width:60%" />
+        <div style="color:var(--muted)" id="projectCount">Showing 3</div>
+      </div>
+
+      <div class="filter-tags" id="filterTags">
+        <button class="filter-tag active" data-tech="all">All</button>
+        <button class="filter-tag" data-tech="presentation">Presentation</button>
+        <button class="filter-tag" data-tech="tableau">Tableau</button>
+        <button class="filter-tag" data-tech="gis">GIS</button>
+        <button class="filter-tag" data-tech="python">Python</button>
+        <button class="filter-tag" data-tech="javascript">JavaScript</button>
+      </div>
+
+      <div class="grid">
+        <!-- Marriott Case Competition - Research -->
+        <a href="/projects/marriottcasecomp.html" class="project-link">
+          <article class="project card" data-tech="presentation,tableau">
+            <div class="project-icon" style="background:linear-gradient(135deg, #6fa89f 0%, #78b5b5 100%);">
+              <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pmeta">Research</div>
+              <h3 style="margin:0 0 8px 0">Marriott Case Competition</h3>
+              <p style="margin:0;color:var(--muted)">Interactive dashboard for exploring real-time metrics.</p>
+              <div style="margin-top:10px">
+                <span class="badge">Presentation</span>
+                <span class="badge">Tableau</span>
+              </div>
+            </div>
+          </article>
+        </a>
+
+        <!-- Utah County Hazard Map -->
+        <a href="/projects/utahcounty-hazardassesment.html" class="project-link">
+          <article class="project card" data-tech="gis,python,javascript">
+            <div class="project-icon" style="background:linear-gradient(135deg, #3a4f45 0%, #4a5d6a 100%);">
+              <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                <line x1="8" y1="2" x2="8" y2="18"></line>
+                <line x1="16" y1="6" x2="16" y2="22"></line>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pmeta">Mapping</div>
+              <h3 style="margin:0 0 8px 0">Utah County Hazard Map</h3>
+              <p style="margin:0;color:var(--muted)">GIS-based visualization of hazard data for Utah county.</p>
+              <div style="margin-top:10px">
+                <span class="badge">GIS</span>
+              </div>
+            </div>
+          </article>
+        </a>
+
+        <!-- Data Pipeline Optimizer -->
+        <a href="/projects/Ames-Iowa-erd.html" class="project-link">
+          <article class="project card" data-tech="python">
+            <div class="project-icon" style="background:linear-gradient(135deg, #4a5d6a 0%, #5a6562 100%);">
+              <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v6m0 6v6m5.196-15.804l-4.243 4.243m0 6.364l4.243 4.243M23 12h-6m-6 0H1m15.804-5.196l-4.243 4.243m0 6.364l4.243 4.243"></path>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pmeta">Automation</div>
+              <h3 style="margin:0 0 8px 0">Ames Iowa ERD Analysis</h3>
+              <p style="margin:0;color:var(--muted)">Scripted ETL system improving processing time by 30%.</p>
+              <div style="margin-top:10px">
+                <span class="badge">Python</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+    </div>
+    <footer class="footer">
+        <div>© <span id="year"></span> Alex Hill</div>
+        <div style="margin-top:6px;color:var(--muted)">Built with HTML, CSS, and JavaScript with aid from AI</div>
+    </footer>
+  </main>
+
+  <script>
+    const filterTags = document.querySelectorAll('.filter-tag');
+    const projects = document.querySelectorAll('.project');
+    const searchInput = document.getElementById('searchInput');
+    const projectCount = document.getElementById('projectCount');
+    let activeFilter = 'all';
+
+    function updateProjectCount() {
+      const visibleProjects = document.querySelectorAll('.project:not(.hidden)').length;
+      projectCount.textContent = `Showing ${visibleProjects}`;
+    }
+
+    function filterProjects() {
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      projects.forEach(project => {
+        const techData = project.getAttribute('data-tech').toLowerCase();
+        const projectText = project.textContent.toLowerCase();
+        
+        const matchesTech = activeFilter === 'all' || techData.includes(activeFilter);
+        const matchesSearch = projectText.includes(searchTerm);
+        
+        if (matchesTech && matchesSearch) {
+          project.classList.remove('hidden');
+        } else {
+          project.classList.add('hidden');
+        }
+      });
+      
+      updateProjectCount();
+    }
+
+    filterTags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        filterTags.forEach(t => t.classList.remove('active'));
+        tag.classList.add('active');
+        activeFilter = tag.getAttribute('data-tech');
+        filterProjects();
+      });
+    });
+
+    searchInput.addEventListener('input', filterProjects);
+
+    updateProjectCount();
+  </script>
+</body>
+</html>

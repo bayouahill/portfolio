@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>2023 Marriott Case Competion — Alex Hill</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <div class="logo">
+        <img src="../images/Hill, Alex - Copy.jpg" alt="Image of Alex Hill" class="logo">
+      </div>
+      <div><div style="font-weight:800">Alex Hill</div><div style="color:var(--muted);font-size:13px">Portfolio</div></div>
+    </div>
+    <nav class="nav" id="navMenu">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html">Projects</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div style="margin-bottom:24px">
+      <a href="../projects.html" style="color:var(--muted);text-decoration:none;font-size:14px">← Back to Projects</a>
+    </div>
+    
+    <div class="card">
+      <div class="pmeta">Dashboard</div>
+      <h1 style="font-size:42px;font-weight:600;margin:12px 0 24px 0;letter-spacing:-1.5px">2023 Marriott Case Competition</h1>
+      <p class="lead">An interactive dashboard for exploring real-time metrics with custom visualizations and data filtering capabilities.</p>
+
+      <div style="display:flex;gap:32px;margin:24px 0;color:var(--muted);font-size:14px">
+        <div>
+          <strong style="color:var(--text);display:block;margin-bottom:4px">Role</strong>
+          Data Analyst / Developer / Consulting
+        </div>
+        <div>
+          <strong style="color:var(--text);display:block;margin-bottom:4px">Year</strong>
+          2023
+        </div>
+        <div>
+          <strong style="color:var(--text);display:block;margin-bottom:4px">Technologies</strong>
+          Presentation, Tableau
+        </div>
+      </div>
+
+      <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+      padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+      border-radius: 8px; will-change: transform;">
+        <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+        src="https://www.canva.com/design/DAFxw8pMxUM/UByRObZNn_BN89xeM47r7Q/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+        </iframe>
+      </div>
+      <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFxw8pMxUM&#x2F;UByRObZNn_BN89xeM47r7Q&#x2F;view?utm_content=DAFxw8pMxUM&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" class="btn"  target="_blank" rel="noopener">One Marriott: Cultivating Sustainable Changes</a>
+      <div style="margin-top:40px">
+        <h3>Project Overview</h3>
+        <p style="color:var(--muted);line-height:1.8">
+          The Data Explorer dashboard was built to provide real-time insights into key business metrics. 
+          Users can filter data by date range, category, and custom parameters to visualize trends and patterns.
+          The interface includes interactive charts, data tables, and export functionality.
+        </p>
+
+        <h3 style="margin-top:32px">Key Features</h3>
+        <ul style="color:var(--muted);line-height:1.8">
+          <li>Real-time data visualization with automatic refresh</li>
+          <li>Interactive filtering and drill-down capabilities</li>
+          <li>Custom date range selection</li>
+          <li>Export to CSV and PDF formats</li>
+          <li>Responsive design for mobile and tablet devices</li>
+        </ul>
+
+        <h3 style="margin-top:32px">Technical Approach</h3>
+        <p style="color:var(--muted);line-height:1.8">
+          Built with vanilla JavaScript for optimal performance, the dashboard connects to a REST API 
+          to fetch data dynamically. Tableau was used for initial prototyping and complex visualizations, 
+          which were then integrated into the custom web interface. The design prioritizes speed and usability.
+        </p>
+      </div>
+    </div>
+
+    <footer class="footer">
+        <div>© <span id="year"></span> Alex Hill</div>
+        <div style="margin-top:6px;color:var(--muted)">Built with HTML, CSS, and JavaScript with aid from AI</div>
+    </footer>
+  </main>
+
+  <script src="../scripts/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alex Hill Portfolio</title>
+  <meta name="description" content="Portfolio of Alex Hill. Projects and analytics work." />
+  <link rel="stylesheet" href="styles/index.css" />
+</head>
+<body>
+  <!-- Photo Hero Section -->
+  <section class="photo-hero">
+    <div class="photo-container">
+      <!-- Photo Slide 1 -->
+      <div class="photo-slide active" data-index="0">
+        <img src="images/lake.jpg" alt="Lake Louise">
+      </div>
+      
+      <!-- Photo Slide 2 -->
+      <div class="photo-slide" data-index="1">
+        <img src="images/hotspring.jpg" alt="Hot springs overlooking Banff">
+      </div>
+      
+      <!-- Photo Slide 4 -->
+      <div class="photo-slide" data-index="3">
+        <img src="images/banff_mountain.jpg" alt="Lake Louise and a Mountain behind it.">
+      </div>
+      
+      <!-- Overlay Text -->
+      <div class="photo-overlay">
+        <h1>Alex Hill</h1>
+        <p>Analytics and Data Visualization</p>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="container header">
+      <div class="brand">
+        <div class="logo">
+          <img src="/images/Hill, Alex - Copy.jpg" alt="Image of Alex Hill" class="logo">
+        </div>
+        <div>
+          <div style="font-weight:800">Alex Hill</div>
+          <div style="color:var(--muted);font-size:13px">Analytics and Data Visualization</div>
+        </div>
+      </div>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Hero Section with Visualization -->
+      <section class="hero">
+        <div>
+          <div class="card">
+            <h1 class="headline">Turning data into clear stories</h1>
+            <p class="lead">I build visual tools and interactive dashboards that turn numbers into insight.</p>
+            <div class="cta-row">
+              <a class="btn" href="about.html">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Visualization Box -->
+        <aside>
+          <div class="card">
+            <h1 class="headline">Skills/Interests</h1>
+            <ul>
+              <li class="leadlist">Data Analyst/Scientist</li>
+              <li class="leadlist">Data Base Engineer</li>
+              <li class="leadlist">Outdoor Enthusiest</li>
+              <li class="leadlist">AI Developer</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Centered Section Header -->
+      <section class="section-header">
+        <h2>Featured Projects</h2>
+        <p>A collection of analytics, visualization, and outdoor-focused work</p>
+      </section>
+
+      <!-- Projects Grid -->
+      <section>
+        <div class="grid">
+          <article class="project">
+            <div class="project-icon" style="background:linear-gradient(135deg, #6fa89f 0%, #78b5b5 100%);">
+              <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>            
+            <div class="pbody">
+              <div class="pmeta">Dashboard</div>
+              <h3>Data Explorer</h3>
+              <p style="margin:0;color:var(--muted)">An interactive dashboard for exploring real-time metrics.</p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-icon" style="background:linear-gradient(135deg, #3a4f45 0%, #4a5d6a 100%);">
+              <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                <line x1="8" y1="2" x2="8" y2="18"></line>
+                <line x1="16" y1="6" x2="16" y2="22"></line>
+              </svg>
+            </div>            <div class="pbody">
+              <div class="pmeta">Mapping</div>
+              <h3>Outdoor Risk Map</h3>
+              <p style="margin:0;color:var(--muted)">GIS-based visualization of hazard data for outdoor planning.</p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-icon" style="background:linear-gradient(135deg, #4a5d6a 0%, #5a6562 100%);">
+              <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v6m0 6v6m5.196-15.804l-4.243 4.243m0 6.364l4.243 4.243M23 12h-6m-6 0H1m15.804-5.196l-4.243 4.243m0 6.364l4.243 4.243"></path>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pmeta">Automation</div>
+              <h3>Data Pipeline Optimizer</h3>
+              <p style="margin:0;color:var(--muted)">Scripted ETL system improving processing time by 30%.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact & Resume Section -->
+      <section style="margin-top: 80px;">
+        <div>
+          <h2 style="margin-top:0">Let's Connect</h2>
+          <p class="lead" style="margin-bottom: 32px;">Download my resume or get in touch directly.</p>
+          
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a class="btn" href="files/Alex Hill - Resume.pdf" download>
+              <svg style="width: 18px; height: 18px; margin-right: 8px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+              </svg>
+              Download Resume
+            </a>
+            
+            <a class="btn" href="mailto:bayouahill21@gmail.com" style="background:var(--accent);border:1px solid var(--accent)">
+              <svg style="width: 18px; height: 18px; margin-right: 8px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              Send Email
+            </a>
+            
+            <a class="btn" href="https://www.linkedin.com/in/alex-hill-bayou" target="_blank" rel="noopener noreferrer" style="background:transparent;color:var(--text);border:1px solid var(--border)">
+              <svg style="width: 18px; height: 18px; margin-right: 8px;" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Alex Hill</div>
+        <div style="margin-top:6px;color:var(--muted)">Built with HTML, CSS, and JavaScript with aid from AI</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll-driven photo transitions
+    const photoHero = document.querySelector('.photo-hero');
+    const slides = document.querySelectorAll('.photo-slide');
+    const totalSlides = slides.length;
+    
+    let currentSlide = 0;
+    
+    window.addEventListener('scroll', () => {
+      const heroRect = photoHero.getBoundingClientRect();
+      const heroHeight = photoHero.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      
+      const scrollProgress = Math.max(0, Math.min(1, -heroRect.top / (heroHeight - viewportHeight)));
+      const slideIndex = Math.floor(scrollProgress * totalSlides);
+      const targetSlide = Math.min(slideIndex, totalSlides - 1);
+      
+      if (targetSlide !== currentSlide) {
+        slides[currentSlide].classList.remove('active');
+        slides[targetSlide].classList.add('active');
+        currentSlide = targetSlide;
+      }
+      
+      const scrollIndicator = document.querySelector('.scroll-indicator');
+      if (scrollProgress > 0.05) {
+        scrollIndicator.style.opacity = '0';
+      } else {
+        scrollIndicator.style.opacity = '1';
+      }
+    });
+
+    // Interactive canvas visualization
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      const container = canvas.parentElement;
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
+      generateStaticMountains();
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    const dataPoints = [];
+    const maxPoints = 50;
+    let mouseX = canvas.width / 2;
+    let mouseY = canvas.height / 2;
+    let time = 0;
+    
+    const mountains = [];
+    
+    function generateStaticMountains() {
+      mountains.length = 0;
+      const layers = [
+        { peaks: 6, baseHeight: 200, color: '#3a4f45', alpha: 0.2 },
+        { peaks: 7, baseHeight: 150, color: '#4a5d6a', alpha: 0.25 },
+        { peaks: 8, baseHeight: 100, color: '#5a7d7a', alpha: 0.3 }
+      ];
+      
+      layers.forEach((layer, layerIndex) => {
+        const points = [];
+        const peakSpacing = canvas.width / layer.peaks;
+        
+        for (let i = 0; i <= layer.peaks; i++) {
+          const x = peakSpacing * i;
+          const peakHeight = layer.baseHeight + Math.sin(i * 0.8 + layerIndex) * 30;
+          const offset = Math.cos(i * 1.2) * 15;
+          
+          points.push({
+            x: x + offset,
+            y: canvas.height - peakHeight
+          });
+          
+          if (i < layer.peaks) {
+            const valleyX = x + peakSpacing / 2;
+            const valleyDepth = layer.baseHeight * 0.5;
+            points.push({
+              x: valleyX,
+              y: canvas.height - valleyDepth
+            });
+          }
+        }
+        
+        mountains.push({
+          points: points,
+          color: layer.color,
+          alpha: layer.alpha
+        });
+      });
+    }
+    
+    generateStaticMountains();
+    
+    for (let i = 0; i < maxPoints; i++) {
+      dataPoints.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        baseX: Math.random() * canvas.width,
+        baseY: Math.random() * canvas.height,
+        vx: 0,
+        vy: 0,
+        size: Math.random() * 2 + 1,
+        offset: Math.random() * Math.PI * 2,
+        speed: 0.3 + Math.random() * 0.3
+      });
+    }
+    
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
+      mouseY = (e.clientY - rect.top) * (canvas.height / rect.height);
+    });
+    
+    function drawMountains() {
+      mountains.forEach(mountain => {
+        ctx.fillStyle = mountain.color;
+        ctx.globalAlpha = mountain.alpha;
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height);
+        
+        mountain.points.forEach((point) => {
+          ctx.lineTo(point.x, point.y);
+        });
+        
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      });
+    }
+    
+    function drawGrid() {
+      ctx.strokeStyle = 'rgba(106, 168, 159, 0.12)';
+      ctx.lineWidth = 1;
+      
+      for (let i = 0; i < 10; i++) {
+        const x = (canvas.width / 10) * i;
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      
+      for (let i = 0; i < 8; i++) {
+        const y = (canvas.height / 8) * i;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+    }
+    
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, '#e8f0f0');
+      gradient.addColorStop(1, '#fafbfa');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      drawGrid();
+      drawMountains();
+      
+      dataPoints.forEach((point, i) => {
+        const orbitRadius = 20;
+        const angle = time * 0.01 * point.speed + point.offset;
+        const targetX = point.baseX + Math.cos(angle) * orbitRadius;
+        const targetY = point.baseY + Math.sin(angle) * orbitRadius;
+        
+        const dx = mouseX - point.x;
+        const dy = mouseY - point.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 120) {
+          const force = (120 - distance) / 120 * 0.3;
+          point.vx += dx * 0.0002 * force;
+          point.vy += dy * 0.0002 * force;
+        }
+        
+        point.vx += (targetX - point.x) * 0.01;
+        point.vy += (targetY - point.y) * 0.01;
+        
+        point.vx *= 0.95;
+        point.vy *= 0.95;
+        
+        point.x += point.vx;
+        point.y += point.vy;
+        
+        if (point.x < 0) point.x = 0;
+        if (point.x > canvas.width) point.x = canvas.width;
+        if (point.y < 0) point.y = 0;
+        if (point.y > canvas.height) point.y = canvas.height;
+        
+        dataPoints.forEach((other, j) => {
+          if (i < j) {
+            const dx = other.x - point.x;
+            const dy = other.y - point.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            if (dist < 90) {
+              const opacity = 0.4 * (1 - dist / 90);
+              ctx.strokeStyle = `rgba(106, 168, 159, ${opacity})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(point.x, point.y);
+              ctx.lineTo(other.x, other.y);
+              ctx.stroke();
+            }
+          }
+        });
+        
+        const pulseSize = point.size + Math.sin(time * 0.03 + point.offset) * 0.3;
+        
+        ctx.fillStyle = '#6fa89f';
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, pulseSize, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.fillStyle = 'rgba(106, 168, 159, 0.2)';
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, pulseSize + 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      
+      ctx.strokeStyle = 'rgba(106, 168, 159, 0.5)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      
+      const flowPoints = 60;
+      for (let i = 0; i < flowPoints; i++) {
+        const x = (canvas.width / flowPoints) * i;
+        const wave1 = Math.sin(x * 0.02 + time * 0.03) * 25;
+        const wave2 = Math.cos(x * 0.015 + time * 0.02) * 15;
+        const y = canvas.height * 0.55 + wave1 + wave2;
+        
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+      
+      time++;
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+  </script>
+</body>
+</html>

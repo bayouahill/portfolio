@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ames Iowa ERD Analysis — Alex Hill</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <div class="logo">
+        <img src="../images/Hill, Alex - Copy.jpg" alt="Image of Alex Hill" class="logo">
+        </div>
+      <div><div style="font-weight:800">Alex Hill</div><div style="color:var(--muted);font-size:13px">Portfolio</div></div>
+    </div>
+    <nav class="nav" id="navMenu">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html">Projects</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div style="margin-bottom:24px">
+      <a href="../projects.html" style="color:var(--muted);text-decoration:none;font-size:14px">← Back to Projects</a>
+    </div>
+    
+    <div class="card">
+      <div class="pmeta">Dashboard</div>
+      <h1 style="font-size:42px;font-weight:600;margin:12px 0 24px 0;letter-spacing:-1.5px">Ames Iowa ERD Analysis</h1>
+      <p class="lead">An interactive dashboard for exploring real-time metrics with custom visualizations and data filtering capabilities.</p>
+
+      <div style="display:flex;gap:32px;margin:24px 0;color:var(--muted);font-size:14px">
+        <div>
+          <strong style="color:var(--text);display:block;margin-bottom:4px">Role</strong>
+          Data Analyst / Developer
+        </div>
+        <div>
+          <strong style="color:var(--text);display:block;margin-bottom:4px">Year</strong>
+          2024
+        </div>
+        <div>
+          <strong style="color:var(--text);display:block;margin-bottom:4px">Technologies</strong>
+          JavaScript, HTML, CSS, Tableau
+        </div>
+      </div>
+
+      <div class="cta-row" style="margin:32px 0">
+        <a class="btn" href="https://colab.research.google.com/drive/1t-lhzk2nbY32RmYfQe048at86ppWIC8p?usp=sharing" target="_blank" rel="noopener noreferrer" style="background:transparent;color:var(--text);border:1px solid var(--border)">
+        <svg style="width: 18px; height: 18px; margin-right: 8px;" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M16.941 4.976a7.033 7.033 0 0 0-4.93-2.064 7.033 7.033 0 0 0-4.93 2.064 7.033 7.033 0 0 0-.124 9.807l2.395 2.395c.644.644 1.644.644 2.288 0l2.395-2.395a7.033 7.033 0 0 0-.124-9.807zm-3.686 8.563c-.898.898-2.356.898-3.254 0-.898-.898-.898-2.356 0-3.254.898-.898 2.356-.898 3.254 0 .898.898.898 2.356 0 3.254zm8.383 2.828a7.033 7.033 0 0 1-2.064 4.93 7.033 7.033 0 0 1-9.807.124l-2.395-2.395c-.644-.644-.644-1.644 0-2.288l2.395-2.395a7.033 7.033 0 0 1 9.807-.124c.85.85 1.486 1.862 1.916 2.979.43 1.116.643 2.31.643 3.515 0 .436-.043.864-.119 1.283h4.662V24h-6.734c-.414 0-.75-.336-.75-.75s.336-.75.75-.75h4.313a5.283 5.283 0 0 0-1.617-7.643z"/>
+        </svg>
+        View Colab
+        </a>
+        <a href="#" class="btn" style="background:transparent;color:var(--muted);border:1px solid var(--border)" target="_blank">View Live Demo</a>
+      </div>
+
+      <img src="../images/project1.jpg" alt="Data Explorer Dashboard" style="width:100%;height:400px;object-fit:cover;margin:32px 0" />
+
+      <div style="margin-top:40px">
+        <h3>Project Overview</h3>
+        <p style="color:var(--muted);line-height:1.8">
+          The Data Explorer dashboard was built to provide real-time insights into key business metrics. 
+          Users can filter data by date range, category, and custom parameters to visualize trends and patterns.
+          The interface includes interactive charts, data tables, and export functionality.
+        </p>
+
+        <h3 style="margin-top:32px">Key Features</h3>
+        <ul style="color:var(--muted);line-height:1.8">
+          <li>Real-time data visualization with automatic refresh</li>
+          <li>Interactive filtering and drill-down capabilities</li>
+          <li>Custom date range selection</li>
+          <li>Export to CSV and PDF formats</li>
+          <li>Responsive design for mobile and tablet devices</li>
+        </ul>
+
+        <h3 style="margin-top:32px">Technical Approach</h3>
+        <p style="color:var(--muted);line-height:1.8">
+          Built with vanilla JavaScript for optimal performance, the dashboard connects to a REST API 
+          to fetch data dynamically. Tableau was used for initial prototyping and complex visualizations, 
+          which were then integrated into the custom web interface. The design prioritizes speed and usability.
+        </p>
+      </div>
+    </div>
+
+    <footer class="footer">
+        <div>© <span id="year"></span> Alex Hill</div>
+        <div style="margin-top:6px;color:var(--muted)">Built with HTML, CSS, and JavaScript with aid from AI</div>
+    </footer>
+  </main>
+
+  <script src="../scripts/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
