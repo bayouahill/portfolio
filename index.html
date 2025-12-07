@@ -2,40 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Alex Hill Portfolio</title>
   <meta name="description" content="Portfolio of Alex Hill. Projects and analytics work." />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
   <!-- Photo Hero Section -->
   <section class="photo-hero">
     <div class="photo-container">
-      <!-- Photo Slide 1 -->
       <div class="photo-slide active" data-index="0">
-        <img src="images/man with aurora borealis.jpg" alt="Man in front of the Aurora Borealis">
-      </div>
-      
-      <!-- Photo Slide 2 -->
-      <div class="photo-slide" data-index="1">
         <img src="images/hotspring.jpg" alt="Hot springs overlooking Banff">
       </div>
-      
-      <!-- Photo Slide 4 -->
-      <div class="photo-slide" data-index="3">
-        <img src="images/banff_mountain.jpg" alt="Lake Louise and a Mountain behind it.">
-      </div>
-      
-      <!-- Overlay Text -->
+
       <div class="photo-overlay">
         <h1>Alex Hill</h1>
         <p>Analytics and Data Visualization</p>
       </div>
-      
-      <!-- Scroll Indicator -->
+
       <div class="scroll-indicator">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -99,8 +84,9 @@
       <section class="hero">
         <div>
           <div class="card">
-            <h1 class="headline">Turning data into clear stories</h1>
+            <h1 class="headline">Turning Data Into Clear Stories</h1>
             <p class="lead">I build visual tools and interactive dashboards that turn numbers into insight.</p>
+            <p class="lead" style="margin-top:12px;">Open to analytics and web dev opportunities.</p>
             <div class="cta-row">
               <a class="btn" href="about.html">Learn More</a>
             </div>
@@ -247,254 +233,43 @@
     });
 
     // Scroll-driven photo transitions
-    const photoHero = document.querySelector('.photo-hero');
-    const slides = document.querySelectorAll('.photo-slide');
-    const totalSlides = slides.length;
-    
-    let currentSlide = 0;
-    
-    window.addEventListener('scroll', () => {
-      const heroRect = photoHero.getBoundingClientRect();
-      const heroHeight = photoHero.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      
-      const scrollProgress = Math.max(0, Math.min(1, -heroRect.top / (heroHeight - viewportHeight)));
-      const slideIndex = Math.floor(scrollProgress * totalSlides);
-      const targetSlide = Math.min(slideIndex, totalSlides - 1);
-      
-      if (targetSlide !== currentSlide) {
-        slides[currentSlide].classList.remove('active');
-        slides[targetSlide].classList.add('active');
-        currentSlide = targetSlide;
-      }
-      
+    (function() {
+      const photoHero = document.querySelector('.photo-hero');
+      const slides = document.querySelectorAll('.photo-slide');
       const scrollIndicator = document.querySelector('.scroll-indicator');
-      if (scrollProgress > 0.05) {
-        scrollIndicator.style.opacity = '0';
-      } else {
-        scrollIndicator.style.opacity = '1';
-      }
-    });
+      const totalSlides = slides.length;
+      let currentSlide = 0;
 
-    // Interactive canvas visualization
-    const canvas = document.getElementById('heroCanvas');
-    const ctx = canvas.getContext('2d');
-    
-    function resizeCanvas() {
-      const container = canvas.parentElement;
-      canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
-      generateStaticMountains();
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    const dataPoints = [];
-    const maxPoints = 50;
-    let mouseX = canvas.width / 2;
-    let mouseY = canvas.height / 2;
-    let time = 0;
-    
-    const mountains = [];
-    
-    function generateStaticMountains() {
-      mountains.length = 0;
-      const layers = [
-        { peaks: 6, baseHeight: 200, color: '#3a4f45', alpha: 0.2 },
-        { peaks: 7, baseHeight: 150, color: '#4a5d6a', alpha: 0.25 },
-        { peaks: 8, baseHeight: 100, color: '#5a7d7a', alpha: 0.3 }
-      ];
-      
-      layers.forEach((layer, layerIndex) => {
-        const points = [];
-        const peakSpacing = canvas.width / layer.peaks;
-        
-        for (let i = 0; i <= layer.peaks; i++) {
-          const x = peakSpacing * i;
-          const peakHeight = layer.baseHeight + Math.sin(i * 0.8 + layerIndex) * 30;
-          const offset = Math.cos(i * 1.2) * 15;
-          
-          points.push({
-            x: x + offset,
-            y: canvas.height - peakHeight
-          });
-          
-          if (i < layer.peaks) {
-            const valleyX = x + peakSpacing / 2;
-            const valleyDepth = layer.baseHeight * 0.5;
-            points.push({
-              x: valleyX,
-              y: canvas.height - valleyDepth
-            });
-          }
-        }
-        
-        mountains.push({
-          points: points,
-          color: layer.color,
-          alpha: layer.alpha
-        });
-      });
-    }
-    
-    generateStaticMountains();
-    
-    for (let i = 0; i < maxPoints; i++) {
-      dataPoints.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        baseX: Math.random() * canvas.width,
-        baseY: Math.random() * canvas.height,
-        vx: 0,
-        vy: 0,
-        size: Math.random() * 2 + 1,
-        offset: Math.random() * Math.PI * 2,
-        speed: 0.3 + Math.random() * 0.3
-      });
-    }
-    
-    canvas.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
-      mouseY = (e.clientY - rect.top) * (canvas.height / rect.height);
-    });
-    
-    function drawMountains() {
-      mountains.forEach(mountain => {
-        ctx.fillStyle = mountain.color;
-        ctx.globalAlpha = mountain.alpha;
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height);
-        
-        mountain.points.forEach((point) => {
-          ctx.lineTo(point.x, point.y);
-        });
-        
-        ctx.lineTo(canvas.width, canvas.height);
-        ctx.closePath();
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      });
-    }
-    
-    function drawGrid() {
-      ctx.strokeStyle = 'rgba(106, 168, 159, 0.12)';
-      ctx.lineWidth = 1;
-      
-      for (let i = 0; i < 10; i++) {
-        const x = (canvas.width / 10) * i;
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-        ctx.stroke();
+      function clamp01(v) {
+        return Math.max(0, Math.min(1, v));
       }
-      
-      for (let i = 0; i < 8; i++) {
-        const y = (canvas.height / 8) * i;
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-        ctx.stroke();
-      }
-    }
-    
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, '#e8f0f0');
-      gradient.addColorStop(1, '#fafbfa');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      drawGrid();
-      drawMountains();
-      
-      dataPoints.forEach((point, i) => {
-        const orbitRadius = 20;
-        const angle = time * 0.01 * point.speed + point.offset;
-        const targetX = point.baseX + Math.cos(angle) * orbitRadius;
-        const targetY = point.baseY + Math.sin(angle) * orbitRadius;
-        
-        const dx = mouseX - point.x;
-        const dy = mouseY - point.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < 120) {
-          const force = (120 - distance) / 120 * 0.3;
-          point.vx += dx * 0.0002 * force;
-          point.vy += dy * 0.0002 * force;
+
+      function updateSlides() {
+        if (!photoHero || totalSlides === 0) return;
+
+        const heroStart = photoHero.offsetTop;
+        const heroHeight = photoHero.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const scrollY = window.scrollY || window.pageYOffset;
+
+        const progress = clamp01((scrollY - heroStart) / (heroHeight - viewportHeight));
+        const targetSlide = Math.min(Math.floor(progress * totalSlides), totalSlides - 1);
+
+        if (targetSlide !== currentSlide) {
+          slides[currentSlide].classList.remove('active');
+          slides[targetSlide].classList.add('active');
+          currentSlide = targetSlide;
         }
-        
-        point.vx += (targetX - point.x) * 0.01;
-        point.vy += (targetY - point.y) * 0.01;
-        
-        point.vx *= 0.95;
-        point.vy *= 0.95;
-        
-        point.x += point.vx;
-        point.y += point.vy;
-        
-        if (point.x < 0) point.x = 0;
-        if (point.x > canvas.width) point.x = canvas.width;
-        if (point.y < 0) point.y = 0;
-        if (point.y > canvas.height) point.y = canvas.height;
-        
-        dataPoints.forEach((other, j) => {
-          if (i < j) {
-            const dx = other.x - point.x;
-            const dy = other.y - point.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            
-            if (dist < 90) {
-              const opacity = 0.4 * (1 - dist / 90);
-              ctx.strokeStyle = `rgba(106, 168, 159, ${opacity})`;
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              ctx.moveTo(point.x, point.y);
-              ctx.lineTo(other.x, other.y);
-              ctx.stroke();
-            }
-          }
-        });
-        
-        const pulseSize = point.size + Math.sin(time * 0.03 + point.offset) * 0.3;
-        
-        ctx.fillStyle = '#6fa89f';
-        ctx.beginPath();
-        ctx.arc(point.x, point.y, pulseSize, 0, Math.PI * 2);
-        ctx.fill();
-        
-        ctx.fillStyle = 'rgba(106, 168, 159, 0.2)';
-        ctx.beginPath();
-        ctx.arc(point.x, point.y, pulseSize + 1.5, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      
-      ctx.strokeStyle = 'rgba(106, 168, 159, 0.5)';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      
-      const flowPoints = 60;
-      for (let i = 0; i < flowPoints; i++) {
-        const x = (canvas.width / flowPoints) * i;
-        const wave1 = Math.sin(x * 0.02 + time * 0.03) * 25;
-        const wave2 = Math.cos(x * 0.015 + time * 0.02) * 15;
-        const y = canvas.height * 0.55 + wave1 + wave2;
-        
-        if (i === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
+
+        if (scrollIndicator) {
+          scrollIndicator.style.opacity = progress > 0.05 ? '0' : '1';
         }
       }
-      ctx.stroke();
-      
-      time++;
-      requestAnimationFrame(animate);
-    }
-    
-    animate();
+
+      window.addEventListener('scroll', updateSlides);
+      window.addEventListener('resize', updateSlides);
+      updateSlides();
+    })();
   </script>
 </body>
 </html>
