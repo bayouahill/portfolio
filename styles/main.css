@@ -1,20 +1,64 @@
+/* ============================================================================
+   COLOR PALETTE - BANFF-INSPIRED OUTDOOR THEME
+   ============================================================================
+   
+   PRIMARY COLORS
+   ──────────────────────────────────────────────────────────────────────────
+   Accent (Teal)     #6fa89f  ████  Main brand color, buttons, highlights
+   Forest (Green)    #3a4f45  ████  Dark accents, hover states
+   Mountain (Blue)   #4a5d6a  ████  Project cards, secondary elements
+   
+   NEUTRALS
+   ──────────────────────────────────────────────────────────────────────────
+   Text (Dark)       #1c2b2d  ████  Primary text color
+   Muted (Gray)      #5a6562  ████  Secondary text, labels
+   Background        #fafbfa  ████  Page background
+   Card (White)      #ffffff  ████  Card backgrounds
+   Border            #e1e5e3  ████  Subtle borders and dividers
+   
+   GRADIENTS (Project Card Backgrounds)
+   ──────────────────────────────────────────────────────────────────────────
+   Teal Gradient     #6fa89f → #78b5b5  (Presentation/Tableau projects)
+   Forest Gradient   #3a4f45 → #4a5d6a  (GIS/Mapping projects)
+   Aqua Gradient     #5a7d7a → #78b5b5  (Python/Data projects)
+   
+   ACCENT COLORS
+   ──────────────────────────────────────────────────────────────────────────
+   Lake (Light Teal) #78b5b5  ████  Lighter teal accents
+   Sky (Light Blue)  #8fa5b3  ████  Soft blue accents
+   Earth (Brown)     #8b7355  ████  Warm earth tones
+   Secondary (Tan)   #c89860  ████  Warm accents
+   
+   USAGE NOTES
+   ──────────────────────────────────────────────────────────────────────────
+   • Accent color for CTAs, active states, and primary actions
+   • Forest/Mountain for project category differentiation
+   • Muted for secondary text (metadata, timestamps, captions)
+   • Border for subtle separations (cards, sections)
+   
+============================================================================ */
+
 /* ===================================
    CSS VARIABLES & ROOT STYLES
    =================================== */
 :root {
-  /* Banff-Inspired Outdoor Palette */
-  --bg: #fafbfa;
-  --text: #1c2b2d;
-  --card: #ffffff;
-  --muted: #5a6562;
-  --accent: #6fa89f;
-  --secondary: #c89860;
-  --mountain: #4a5d6a;
-  --forest: #3a4f45;
-  --lake: #78b5b5;
-  --sky: #8fa5b3;
-  --earth: #8b7355;
-  --border: #e1e5e3;
+  /* Primary Colors */
+  --accent: #6fa89f;      /* Teal - Main brand color */
+  --forest: #3a4f45;      /* Dark green - Hover states */
+  --mountain: #4a5d6a;    /* Blue-gray - Secondary elements */
+  
+  /* Neutrals */
+  --text: #1c2b2d;        /* Primary text */
+  --muted: #5a6562;       /* Secondary text */
+  --bg: #fafbfa;          /* Page background */
+  --card: #ffffff;        /* Card background */
+  --border: #e1e5e3;      /* Borders and dividers */
+  
+  /* Accent Variations */
+  --lake: #78b5b5;        /* Light teal */
+  --sky: #8fa5b3;         /* Light blue */
+  --earth: #8b7355;       /* Earth brown */
+  --secondary: #c89860;   /* Warm tan */
   
   /* Layout */
   --max-width: 1280px;
@@ -46,6 +90,102 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   PHOTO HERO SECTION (Index page)
+   =================================== */
+.photo-hero {
+  position: relative;
+  height: 400vh; /* 4x viewport height for scroll space */
+}
+
+.photo-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.photo-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.photo-slide.active {
+  opacity: 1;
+}
+
+.photo-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Overlay text on photos */
+.photo-overlay {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  z-index: 10;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+}
+
+.photo-overlay h1 {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+}
+
+.photo-overlay p {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  opacity: 0.95;
+  text-transform: uppercase;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: bounce 2s infinite;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator svg {
+  width: 30px;
+  height: 30px;
+  stroke: white;
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
 }
 
 /* ===================================
@@ -67,6 +207,9 @@ body {
   justify-content: space-between;
   padding: 24px 0;
   border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+  z-index: 100;
 }
 
 .brand {
@@ -79,7 +222,7 @@ body {
   width: 58px;
   height: 58px;
   border-radius: var(--radius);
-  background: var(--text);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,6 +230,14 @@ body {
   color: var(--bg);
   font-size: 20px;
   letter-spacing: -1px;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
 }
 
 .nav {
@@ -127,8 +278,94 @@ body {
   width: 100%;
 }
 
+/* Dropdown Menu */
+.nav-item {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-item > a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown-arrow {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.nav-item:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  min-width: 200px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-menu a:hover {
+  background: var(--bg);
+  border-left-color: var(--accent);
+  color: var(--accent);
+}
+
+.dropdown-menu a::after {
+  display: none;
+}
+
+/* Mobile menu button (hidden on desktop) */
+.mobile-menu-btn,
+.mobile-nav,
+.mobile-nav-overlay {
+  display: none;
+}
+
 /* ===================================
-   HERO SECTION
+   MAIN CONTENT SECTION
+   =================================== */
+.main-content {
+  margin-top: 10px;
+  background: var(--bg);
+  position: relative;
+  z-index: 5;
+}
+
+/* ===================================
+   HERO SECTION (with interactive viz)
    =================================== */
 .hero {
   display: grid;
@@ -155,6 +392,36 @@ body {
   max-width: 480px;
 }
 
+.leadlist {
+  color: var(--muted);
+  margin: 0 0 32px 50px;
+  font-size: 20px;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* ===================================
+   SECTION HEADER
+   =================================== */
+.section-header {
+  text-align: center;
+  padding: 100px 0 60px 0;
+}
+
+.section-header h2 {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  margin-bottom: 12px;
+}
+
+.section-header p {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 /* ===================================
    CARDS & BUTTONS
    =================================== */
@@ -162,6 +429,8 @@ body {
   background: var(--card);
   border: 1px solid var(--border);
   padding: 40px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .cta-row {
@@ -184,15 +453,59 @@ body {
   text-transform: uppercase;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 .btn:hover {
-  background: var(--forest);
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(111, 168, 159, 0.4);
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: translateY(0px);
+  box-shadow: 0 2px 8px rgba(111, 168, 159, 0.3);
+}
+
+.btn-accent {
+  background: var(--accent) !important;
+  border: 1px solid var(--accent) !important;
+  color: var(--bg) !important;
+}
+
+.btn-accent:hover {
+  background: var(--forest) !important;
+  border-color: var(--forest) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 79, 69, 0.4);
+}
+
+.btn-outline {
+  background: transparent !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.btn-outline:hover {
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  border-color: var(--accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(111, 168, 159, 0.4);
+}
+
+.btn-dark {
+  background: var(--forest) !important;
+  border: 1px solid var(--forest) !important;
+  color: var(--bg) !important;
+}
+
+.btn-dark:hover {
+  background: var(--mountain) !important;
+  border-color: var(--mountain) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 79, 69, 0.4);
 }
 
 /* ===================================
@@ -202,8 +515,13 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-top: 80px;
+  margin-top: 24px;
   padding-bottom: 80px;
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .project {
@@ -213,13 +531,91 @@ body {
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  position: relative;
+  border-radius: 12px;
+}
+
+/* PROJECT HOVER EFFECTS */
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  border-radius: 12px;
+}
+
+.project > * {
+  position: relative;
+  z-index: 1;
 }
 
 .project:hover {
-  border-color: var(--muted);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(28, 43, 45, 0.08);
+  border-color: transparent;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(111, 168, 159, 0.4);
 }
+
+.project:hover::before {
+  opacity: 1;
+}
+
+/* Different gradient backgrounds for each project card on hover */
+.project[data-tech*="presentation"]::before {
+  background: linear-gradient(135deg, #6fa89f 0%, #78b5b5 100%);
+}
+
+.project[data-tech*="gis"]::before {
+  background: linear-gradient(135deg, #3a4f45 0%, #4a5d6a 100%);
+}
+
+.project[data-tech*="python"]:not([data-tech*="gis"])::before {
+  background: linear-gradient(135deg, #5a7d7a 0%, #78b5b5 100%);
+}
+
+.project:hover .pmeta,
+.project:hover h3,
+.project:hover p {
+  color: white !important;
+}
+
+.project:hover .badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.project-icon {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  transition: all 0.3s ease;
+}
+
+.project:hover .project-icon {
+  transform: scale(1.05);
+  background: white !important;
+}
+
+/* Change icon color on hover to match the original gradient */
+.project[data-tech*="presentation"]:hover .project-icon svg {
+  stroke: #6fa89f;
+}
+
+.project[data-tech*="gis"]:hover .project-icon svg {
+  stroke: #3a4f45;
+}
+
+.project[data-tech*="python"]:not([data-tech*="gis"]):hover .project-icon svg {
+  stroke: #5a7d7a;
+}
+
 
 .project img {
   width: 100%;
@@ -263,19 +659,203 @@ body {
   margin-right: 8px;
   margin-top: 8px;
   border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* ===================================
+   FILTER TAGS (Projects page)
+   =================================== */
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.filter-tag {
+  padding: 8px 16px;
+  background: var(--card);
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.filter-tag:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(111, 168, 159, 0.3);
+}
+
+.filter-tag.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(111, 168, 159, 0.2);
+}
+
+.project.hidden {
+  display: none;
+}
+
+/* ===================================
+   BACK BUTTON
+   =================================== */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--card);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: var(--bg);
+  color: var(--text);
+  border-color: var(--muted);
+  transform: translateX(-4px);
+}
+
+.back-button svg {
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover svg {
+  transform: translateX(-2px);
 }
 
 /* ===================================
    FOOTER
    =================================== */
 .footer {
-  margin-top: 80px;
-  padding: 40px 0;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  text-align: center;
+  margin-top: 60px;
+  padding: 48px 0 32px 0;
+  background: var(--forest);
+  border-top: none;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(250, 251, 250, 0.15);
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-heading {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--bg);
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.footer-subtitle {
+  color: rgba(250, 251, 250, 0.65);
   font-size: 13px;
-  letter-spacing: 0.5px;
+  margin: 0;
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.footer-buttons a {
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid transparent;
+}
+
+.footer-buttons a:hover {
+  color: rgba(250, 251, 250, 1);
+  border-bottom-color: var(--bg);
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(250, 251, 250, 0.08);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: var(--bg);
+  border: 1.5px solid rgba(250, 251, 250, 0.12);
+}
+
+.footer-social a:hover {
+  background: var(--bg);
+  color: var(--forest);
+  border-color: var(--bg);
+  transform: translateY(-2px);
+}
+
+.footer-social svg {
+  width: 17px;
+  height: 17px;
+}
+
+.footer-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 24px;
+  justify-content: space-between;
+}
+
+.footer-copyright {
+  color: rgba(250, 251, 250, 0.6);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.footer-credit {
+  color: rgba(250, 251, 250, 0.5);
+  font-size: 11px;
 }
 
 /* ===================================
@@ -300,54 +880,440 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
+  .section-header {
+    padding: 60px 0 40px 0;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+  }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 24px;
+    padding: 0 20px;
   }
 
   .header {
-    padding: 20px 0;
+    padding: 20px 0 20px 0;
   }
 
+  .brand {
+    gap: 12px;
+  }
+
+  .logo {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    padding: 0;
+    background: transparent;
+  }
+
+  .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  .brand > div {
+    font-size: 14px;
+  }
+
+  .brand > div > div:last-child {
+    font-size: 12px !important;
+  }
+
+  /* Hide desktop nav and dropdown, show mobile menu */
   .nav {
-    display: none;
+    display: none !important;
+  }
+
+  .nav-item,
+  .dropdown-menu {
+    display: none !important;
+  }
+
+  /* Mobile hamburger menu */
+  .mobile-menu-btn {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+
+  .mobile-menu-btn span {
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile nav menu */
+  .mobile-nav {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--card);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 150;
+    padding: 80px 32px 32px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .mobile-nav.active {
+    right: 0;
+  }
+
+  .mobile-nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav a:hover,
+  .mobile-nav a.active {
+    color: var(--accent);
+  }
+
+  /* Mobile nav overlay */
+  .mobile-nav-overlay {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 140;
+  }
+
+  .mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
   }
   
   .hero {
     padding: 40px 0;
+    gap: 40px;
   }
 
   .headline {
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 16px;
   }
 
   .lead {
     font-size: 15px;
+    max-width: 100%;
+  }
+
+  .leadlist {
+    font-size: 16px;
+    margin-left: 20px;
   }
 
   .card {
-    padding: 28px;
+    padding: 24px;
+    border-radius: 8px;
+  }
+
+  .card h2 {
+    font-size: 24px;
+  }
+
+  .card h3 {
+    font-size: 20px;
   }
   
   .grid {
     grid-template-columns: 1fr;
     margin-top: 40px;
-    gap: 16px;
+    gap: 20px;
+  }
+
+  .project {
+    border-radius: 12px;
   }
 
   .project img {
-    height: 220px;
+    height: 200px;
+  }
+
+  .project-icon {
+    height: 180px;
+    font-size: 56px;
+  }
+
+  .project .pbody {
+    padding: 20px;
+  }
+
+  .project h3 {
+    font-size: 18px;
+  }
+
+  .pmeta {
+    font-size: 12px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 5px 10px;
   }
 
   .cta-row {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
   }
 
   .btn {
     width: 100%;
+    padding: 12px 24px;
+    font-size: 13px;
+  }
+
+  .btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .filter-tags {
+    gap: 6px;
+    margin: 16px 0;
+  }
+
+  .filter-tag {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  .back-button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .back-button svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 4px !important;
+  }
+  
+  .photo-hero {
+    height: 300vh;
+  }
+
+  .photo-overlay {
+    bottom: 60px;
+  }
+
+  .photo-overlay h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+  
+  .photo-overlay p {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+  }
+
+  .scroll-indicator {
+    bottom: 20px;
+  }
+
+  .scroll-indicator svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .section-header {
+    padding: 40px 0 24px 0;
+  }
+
+  .section-header h2 {
+    font-size: 26px;
+  }
+
+  .section-header p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .footer {
+    margin-top: 0;
+    padding: 40px 0 32px 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+    padding-bottom: 24px;
+  }
+
+  .footer-left {
+    width: 100%;
+  }
+
+  .footer-heading {
+    font-size: 16px;
+  }
+
+  .footer-subtitle {
+    font-size: 12px;
+  }
+
+  .footer-right {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-buttons {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .footer-buttons a {
+    font-size: 12px;
+  }
+
+  .footer-social {
+    gap: 12px;
+  }
+
+  .footer-social a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-social svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .footer-copyright {
+    font-size: 11px;
+  }
+
+  .footer-credit {
+    font-size: 10px;
+  }
+
+  /* About page specific */
+  .about-main-card {
+    margin-top: 40px !important;
+  }
+
+  main .card ul {
+    padding-left: 20px;
+  }
+
+  main .card ul li {
+    font-size: 14px;
+    margin-bottom: 12px !important;
+  }
+
+  /* Projects page search */
+  #searchInput {
+    width: 100% !important;
+    margin-bottom: 0;
+    min-width: 100% !important;
+    font-size: 16px !important;
+  }
+
+  #projectCount {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Index page contact section */
+  main section > div {
+    padding: 0;
+  }
+
+  main section h2 {
+    font-size: 24px;
+  }
+
+  /* Skills list on index */
+  aside ul {
+    padding-left: 20px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .photo-overlay h1 {
+    font-size: 32px;
+  }
+
+  .photo-overlay p {
+    font-size: 12px;
+  }
+
+  .headline {
+    font-size: 24px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .project-icon {
+    height: 160px;
+    font-size: 48px;
+  }
+
+  .btn {
+    padding: 10px 20px;
   }
 }
