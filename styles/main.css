@@ -91,6 +91,28 @@ body {
   line-height: 1.6;
   font-weight: 400;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent overflow from various elements */
+table, pre, code, iframe, video {
+  max-width: 100%;
+}
+
+iframe {
+  width: 100%;
 }
 
 /* ===================================
