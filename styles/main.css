@@ -622,6 +622,14 @@ iframe {
   background: linear-gradient(135deg, #5a7d7a 0%, #78b5b5 100%);
 }
 
+/* Ellarises tile: use gray gradient and shadow on hover */
+.project-link[href*="ellarises-eda-and-dashboard"] .project::before {
+  background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%) !important;
+}
+.project-link[href*="ellarises-eda-and-dashboard"] .project:hover {
+  box-shadow: 0 12px 40px rgba(75, 85, 99, 0.35) !important;
+}
+
 .project:hover .pmeta,
 .project:hover h3,
 .project:hover p {
@@ -648,17 +656,37 @@ iframe {
   background: white !important;
 }
 
-/* Change icon color on hover to match the original gradient */
-.project[data-tech*="presentation"]:hover .project-icon svg {
-  stroke: #6fa89f;
+/* Ellarises tile: default icon white; box turns white and icon gray on hover */
+.project-link[href*="ellarises-eda-and-dashboard"] .project-icon svg {
+  stroke: white !important;
+}
+.project-link[href*="ellarises-eda-and-dashboard"]:hover .project-icon {
+  background: white !important;
+}
+.project-link[href*="ellarises-eda-and-dashboard"]:hover .project-icon svg {
+  stroke: #4b5563 !important;
 }
 
+/* Icon colors */
+.project .project-icon svg {
+  stroke: white !important;
+}
 .project[data-tech*="gis"]:hover .project-icon svg {
-  stroke: #3a4f45;
+  stroke: #4b5563 !important;
+}
+.project[data-tech*="presentation"]:hover .project-icon svg {
+  stroke: #6fa89f !important;
+}
+.project[data-tech*="python"]:not([data-tech*="gis"]):hover .project-icon svg {
+  stroke: #4b5563 !important;
 }
 
-.project[data-tech*="python"]:not([data-tech*="gis"]):hover .project-icon svg {
-  stroke: #5a7d7a;
+/* Ellarises override: keep icon gray on hover */
+.project-link[href*="ellarises-eda-and-dashboard"]:hover .project-icon {
+  background: white !important;
+}
+.project-link[href*="ellarises-eda-and-dashboard"]:hover .project-icon svg {
+  stroke: #4b5563 !important;
 }
 
 
@@ -706,6 +734,21 @@ iframe {
   border: 1px solid var(--border);
   border-radius: 4px;
   transition: all 0.2s ease;
+}
+
+/* About page: make skill chips flat, not button-like */
+.about-main-card .badge {
+  padding: 4px 0;
+  margin-right: 14px;
+  margin-top: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  letter-spacing: 0.4px;
+  text-transform: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 /* ===================================
