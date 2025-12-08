@@ -1,5 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#3a4f45"/>
-  <text x="50%" y="55%" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#fafbfa">AH</text>
+  <rect width="64" height="64" rx="8" fill="#1f2933"/>
+
+  <!-- angle brackets -->
+  <path d="M16 26 L10 32 L16 38" fill="none" stroke="#e5e7eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48 26 L54 32 L48 38" fill="none" stroke="#e5e7eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- simple pine made of lines: trunk with 3 close branches (scaled 1.5x) -->
+  <g transform="translate(32 32) scale(1.5) translate(-32 -32)">
+    <path d="M32 20 L32 46" stroke="#4caf50" stroke-width="3" stroke-linecap="round"/>
+    <path d="M32 20 L26 26 M32 20 L38 26
+             M32 28 L26 34 M32 28 L38 34
+             M32 36 L26 42 M32 36 L38 42" stroke="#4caf50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
 </svg>
 

@@ -204,6 +204,7 @@
   <script>
     const filterTags = document.querySelectorAll('.filter-tag');
     const projects = document.querySelectorAll('.project');
+    const projectGrid = document.querySelector('.grid');
     const searchInput = document.getElementById('searchInput');
     const projectCount = document.getElementById('projectCount');
     let activeFilter = 'all';
@@ -230,17 +231,30 @@
     function filterProjects() {
       const searchTerm = searchInput.value.toLowerCase();
       
+      const visibleLinks = [];
+      const hiddenLinks = [];
+
       projects.forEach(project => {
         const techData = project.getAttribute('data-tech').toLowerCase();
         const projectText = project.textContent.toLowerCase();
+        const link = project.closest('.project-link');
         
         const matchesTech = activeFilter === 'all' || techData.includes(activeFilter);
         const matchesSearch = projectText.includes(searchTerm);
         
         if (matchesTech && matchesSearch) {
           project.classList.remove('hidden');
+          if (link) visibleLinks.push(link);
         } else {
           project.classList.add('hidden');
+          if (link) hiddenLinks.push(link);
+        }
+      });
+
+      // Reorder cards so visible projects appear first
+      [...visibleLinks, ...hiddenLinks].forEach(card => {
+        if (card && projectGrid.contains(card)) {
+          projectGrid.appendChild(card);
         }
       });
       
