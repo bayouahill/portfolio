@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Utah County Hazard Report — Alex Hill</title>
+  <title>Company EDA & Tableau Dashboards — Alex Hill</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles/main.css" />
 </head>
@@ -63,14 +63,14 @@
     </div>
     
     <div class="card">
-      <div class="pmeta">Dashboard</div>
-      <h1 style="font-size:42px;font-weight:600;margin:12px 0 24px 0;letter-spacing:-1.5px">Utah County Hazard Report</h1>
-      <p class="lead">An interactive dashboard for exploring real-time metrics with custom visualizations and data filtering capabilities.</p>
+      <div class="pmeta">EDA & Dashboards</div>
+      <h1 style="font-size:42px;font-weight:600;margin:12px 0 24px 0;letter-spacing:-1.5px">Company EDA & Tableau Dashboards</h1>
+      <p class="lead">End-to-end exploratory analysis with interactive Tableau dashboards that surface operational and customer insights for stakeholders.</p>
 
-      <div style="display:flex;gap:32px;margin:24px 0;color:var(--muted);font-size:14px">
+      <div style="display:flex;gap:32px;margin:24px 0;color:var(--muted);font-size:14px;flex-wrap:wrap">
         <div>
           <strong style="color:var(--text);display:block;margin-bottom:4px">Role</strong>
-          Data Analyst / Developer
+          Data Analyst / Dashboard Developer
         </div>
         <div>
           <strong style="color:var(--text);display:block;margin-bottom:4px">Year</strong>
@@ -78,32 +78,49 @@
         </div>
         <div>
           <strong style="color:var(--text);display:block;margin-bottom:4px">Technologies</strong>
-          JavaScript, HTML, CSS, Tableau
+          Tableau, EDA
         </div>
       </div>
 
-      <div class="cta-row" style="margin:32px 0; display:flex; gap:12px; flex-wrap:wrap">
-        <a href="https://byu.maps.arcgis.com/apps/mapviewer/index.html?webmap=61677f3a5d164304ac8e177bc8a03d52" class="btn secondary" target="_blank" rel="noopener">Interactive Hazard Map</a>
+      <!-- Replace the src with the published Tableau dashboard URL -->
+      <div style="position: relative; width: 100%; height: 0; padding-top: 56.25%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+        <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" src="https://public.tableau.com/views/REPLACE_WITH_DASHBOARD/Story?:showVizHome=no" allowfullscreen="allowfullscreen" allow="fullscreen">
+        </iframe>
       </div>
+      <a href="https://public.tableau.com/views/REPLACE_WITH_DASHBOARD/Story?:showVizHome=no" class="btn" target="_blank" rel="noopener">Open Tableau Dashboard</a>
 
       <div style="margin-top:40px">
         <h3>Project Overview</h3>
         <p style="color:var(--muted);line-height:1.8">
-          Built an interactive ArcGIS hazard map for Utah County that overlays transportation networks (centerlines, highways, railroads) with city and county boundaries plus hazard layers (fault lines, liquefaction, landslide areas, dam failure). Viewers can toggle layers, zoom to areas of interest, and quickly see where critical infrastructure intersects with high-risk zones to guide mitigation and planning.
+          This project combines a thorough exploratory data analysis with executive-ready Tableau dashboards. The work maps data quality, explores correlations, and visualizes trends that inform strategic choices for the company. Dashboards are organized for decision-makers to move from high-level KPIs into detailed drill-downs without leaving the experience.
         </p>
 
-        <h3 style="margin-top:32px">Key Features</h3>
-        <ul style="color:var(--muted);line-height:1.8">
-          <li>Layer toggles for transportation, boundaries, and multiple hazard types</li>
-          <li>Pop-ups with context on fault lines, liquefaction, landslide, and dam failure zones</li>
-          <li>Clear symbology to highlight at-risk corridors and communities</li>
-          <li>Interactive map navigation to zoom and inspect high-risk areas quickly</li>
-          <li>Hosted ArcGIS Online experience for easy stakeholder access</li>
+        <h3 style="margin-top:32px">Dashboard Highlights</h3>
+        <ul style="color:var(--muted);line-height:1.8; padding-left: 40px;">
+          <li>Executive summary with KPIs and year-over-year trend cards</li>
+          <li>Driver analysis visualizing relationships between key metrics and outcomes</li>
+          <li>Segment deep dives with filters for region, product line, and customer tier</li>
+          <li>Operational performance view to flag bottlenecks and cycle times</li>
         </ul>
 
-        <h3 style="margin-top:32px">Technical Approach</h3>
-        <p style="color:var(--muted);line-height:1.8">
-          Prepared layers in ArcGIS Pro (transportation, admin boundaries, hazard polygons) and published to ArcGIS Online with consistent symbology and pop-ups. Configured the web map to support layer toggles, feature identification, and navigation to high-risk zones. Embedded the hosted map for easy access while keeping performance optimized for end users.
+        <h3 style="margin-top:32px">EDA Workflow</h3>
+        <ul style="color:var(--muted);line-height:1.8; padding-left: 40px;">
+          <li>Data audit to assess completeness, outliers, and normalization needs</li>
+          <li>Feature exploration to uncover correlations and seasonality patterns</li>
+          <li>Metric design to align dashboards with stakeholder questions</li>
+          <li>Iterative dashboard prototyping with feedback from business partners</li>
+        </ul>
+
+        <h3 style="margin-top:32px">Key Findings Communicated</h3>
+        <ul style="color:var(--muted);line-height:1.8; padding-left: 40px;">
+          <li>Prioritized levers for improving the primary KPI based on observed correlations</li>
+          <li>Regional and product segments with the largest growth headroom</li>
+          <li>Operational choke points visible through throughput and cycle time metrics</li>
+          <li>Recommended monitoring cadence and next-step experiments</li>
+        </ul>
+
+        <p style="color:var(--muted);line-height:1.8; margin-top:24px">
+          Replace the placeholder Tableau link above with the published dashboard URL to render the live views directly on this page.
         </p>
       </div>
     </div>
