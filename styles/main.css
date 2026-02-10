@@ -263,11 +263,13 @@ iframe {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
+  padding: 28px 48px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
   position: relative;
   z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* Subtle alpine gradient fade at top of header */
@@ -433,10 +435,36 @@ iframe {
    MAIN CONTENT SECTION
    =================================== */
 .main-content {
-  margin-top: 10px;
+  margin-top: 0;
   background: var(--bg);
   position: relative;
   z-index: 5;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+/* When main-content follows the photo-hero (index page), add small gap */
+.photo-hero + .main-content {
+  margin-top: 10px;
+}
+
+/* Single background image spanning entire page below hero - removed from behind cards */
+.main-content::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-image: url('../images/zions_2025.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: brightness(0.5) contrast(0.7) blur(2px);
+  opacity: 0.2;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Scroll-fading nature background - works on all pages */
@@ -509,23 +537,7 @@ body.scrolled-far::after {
   position: relative;
 }
 
-/* Subtle alpine gradient accent on hero section */
-.hero::after {
-  content: '';
-  position: absolute;
-  top: -40px;
-  left: 0;
-  width: 100%;
-  height: 40px;
-  background: linear-gradient(
-    180deg,
-    rgba(91, 125, 184, 0.06) 0%,
-    rgba(62, 140, 140, 0.03) 50%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
+/* Hero pseudo-elements removed - clean layout */
 
 .hero .card {
   height: 100%;
@@ -582,27 +594,13 @@ body.scrolled-far::after {
    =================================== */
 .section-header {
   text-align: center;
-  padding: 100px 0 60px 0;
+  padding: 60px 40px;
   position: relative;
-}
-
-/* Subtle sandstone divider above section headers */
-.section-header::before {
-  content: '';
-  position: absolute;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(201, 106, 58, 0.3),
-    rgba(230, 160, 122, 0.2),
-    rgba(201, 106, 58, 0.3),
-    transparent
-  );
+  margin: 40px 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .section-header h2 {
@@ -631,6 +629,7 @@ body.scrolled-far::after {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* Subtle sandstone accent on cards (exclude project cards which have their own styling) */
@@ -738,10 +737,13 @@ body.scrolled-far::after {
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 24px;
-  padding-bottom: 80px;
+  gap: 32px;
+  margin-top: 40px;
+  padding: 60px 0 100px;
+  position: relative;
 }
+
+/* Grid overlay removed - clean layout */
 
 .project-link {
   text-decoration: none;
@@ -757,6 +759,8 @@ body.scrolled-far::after {
   transition: all 0.3s ease;
   position: relative;
   border-radius: 12px;
+  z-index: 1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 /* Subtle sandstone accent on project cards (before hover) */
@@ -1028,6 +1032,7 @@ body.scrolled-far::after {
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
+  margin-top: 32px;
   background: var(--card);
   color: var(--muted);
   text-decoration: none;
@@ -1066,7 +1071,7 @@ body.scrolled-far::after {
   overflow: hidden;
 }
 
-/* Subtle sandstone texture overlay on footer */
+/* Warm sandstone overlay with texture pattern on footer */
 .footer::before {
   content: '';
   position: absolute;
@@ -1075,21 +1080,17 @@ body.scrolled-far::after {
   width: 100%;
   height: 100%;
   background: 
+    linear-gradient(135deg, rgba(201, 106, 58, 0.18) 0%, rgba(230, 160, 122, 0.12) 50%, rgba(158, 75, 47, 0.1) 100%),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 3px,
       rgba(201, 106, 58, 0.03) 3px,
       rgba(201, 106, 58, 0.03) 6px
-    ),
-    linear-gradient(
-      180deg,
-      rgba(230, 160, 122, 0.05) 0%,
-      transparent 50%
     );
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 .footer .container {
@@ -1214,6 +1215,10 @@ body.scrolled-far::after {
     padding: 0 32px;
   }
 
+  .header {
+    padding: 28px 32px;
+  }
+
   .hero {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -1240,11 +1245,16 @@ body.scrolled-far::after {
   }
 
   .section-header {
-    padding: 60px 0 40px 0;
+    padding: 40px 32px;
   }
 
   .section-header h2 {
     font-size: 36px;
+  }
+
+  /* Disable fixed background attachment on tablets for better performance */
+  .main-content::after {
+    background-attachment: scroll;
   }
 }
 
@@ -1254,7 +1264,7 @@ body.scrolled-far::after {
   }
 
   .header {
-    padding: 20px 0 20px 0;
+    padding: 20px 20px;
   }
 
   .brand {
@@ -1531,11 +1541,18 @@ body.scrolled-far::after {
   }
 
   .section-header {
-    padding: 40px 0 24px 0;
+    padding: 32px 20px;
   }
 
   .section-header h2 {
     font-size: 26px;
+  }
+
+  /* Disable fixed background attachment on mobile for better performance */
+  .main-content::after {
+    background-attachment: scroll;
+    filter: brightness(0.4) contrast(0.6) blur(3px);
+    opacity: 0.2;
   }
 
   .section-header p {
