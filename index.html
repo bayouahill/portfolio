@@ -114,7 +114,7 @@
         <div class="grid">
           <a href="projects/marriottcasecomp.html" class="project-link">
             <article class="project" data-tech="presentation,tableau">
-              <div class="project-icon" style="background:linear-gradient(135deg, #6fa89f 0%, #78b5b5 100%);">
+              <div class="project-icon" style="background:linear-gradient(135deg, #5B7DB8 0%, #3E8C8C 100%);">
                 <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="18" y1="20" x2="18" y2="10"></line>
                   <line x1="12" y1="20" x2="12" y2="4"></line>
@@ -131,7 +131,7 @@
 
           <a href="projects/utahcounty-hazardassesment.html" class="project-link">
             <article class="project" data-tech="gis,python">
-              <div class="project-icon" style="background:linear-gradient(135deg, #3a4f45 0%, #4a5d6a 100%);">
+              <div class="project-icon" style="background:linear-gradient(135deg, #1F3D2B 0%, #6B7C8F 100%);">
                 <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
                   <line x1="8" y1="2" x2="8" y2="18"></line>
@@ -148,7 +148,7 @@
 
           <a href="projects/Ames-Iowa-erd.html" class="project-link">
             <article class="project" data-tech="python">
-              <div class="project-icon" style="background:linear-gradient(135deg, #5a7d7a 0%, #78b5b5 100%);">
+              <div class="project-icon" style="background:linear-gradient(135deg, #3E8C8C 0%, #5B7DB8 100%);">
                 <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="3"></circle>
                   <path d="M12 1v6m0 6v6m5.196-15.804l-4.243 4.243m0 6.364l4.243 4.243M23 12h-6m-6 0H1m15.804-5.196l-4.243 4.243m0 6.364l4.243 4.243"></path>
@@ -264,6 +264,33 @@
       window.addEventListener('scroll', updateSlides);
       window.addEventListener('resize', updateSlides);
       updateSlides();
+    })();
+
+    // Scroll-based background fade effect (works on all pages)
+    (function() {
+      const body = document.body;
+      if (!body) return;
+
+      function updateBackgroundFade() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const fadeStart = windowHeight * 0.5; // Start fading after 50% of viewport
+        const fadeEnd = windowHeight * 2; // Fully faded by 2 viewport heights
+
+        if (scrollY > fadeStart) {
+          body.classList.add('scrolled');
+          if (scrollY > fadeEnd) {
+            body.classList.add('scrolled-far');
+          } else {
+            body.classList.remove('scrolled-far');
+          }
+        } else {
+          body.classList.remove('scrolled', 'scrolled-far');
+        }
+      }
+
+      window.addEventListener('scroll', updateBackgroundFade);
+      updateBackgroundFade();
     })();
   </script>
 </body>
