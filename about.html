@@ -192,6 +192,33 @@
     document.querySelectorAll('.mobile-nav a').forEach(link => {
       link.addEventListener('click', toggleMobileMenu);
     });
+
+    // Scroll-based background fade effect
+    (function() {
+      const body = document.body;
+      if (!body) return;
+
+      function updateBackgroundFade() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const fadeStart = windowHeight * 0.5;
+        const fadeEnd = windowHeight * 2;
+
+        if (scrollY > fadeStart) {
+          body.classList.add('scrolled');
+          if (scrollY > fadeEnd) {
+            body.classList.add('scrolled-far');
+          } else {
+            body.classList.remove('scrolled-far');
+          }
+        } else {
+          body.classList.remove('scrolled', 'scrolled-far');
+        }
+      }
+
+      window.addEventListener('scroll', updateBackgroundFade);
+      updateBackgroundFade();
+    })();
   </script>
 </body>
 </html>
