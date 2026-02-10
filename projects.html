@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
+  <div class="main-content">
   <header class="container header">
     <div class="brand">
       <div class="logo">
@@ -194,8 +195,8 @@
               </svg>
             </div>
             <div class="pbody">
-              <div class="pmeta">Hobby Project</div>
-              <h3 style="margin:0 0 8px 0">C# M5 Assignment</h3>
+              <div class="pmeta">Web Application</div>
+              <h3 style="margin:0 0 8px 0">Hobby Project</h3>
               <p style="margin:0;color:var(--muted)">Personal C# project exploring object-oriented programming concepts and application development.</p>
               <div style="margin-top:10px">
                 <span class="badge">C#</span>
@@ -244,6 +245,7 @@
       </div>
     </div>
   </footer>
+  </div>
 
   <script>
     const projects = document.querySelectorAll('.project');
@@ -443,7 +445,7 @@
           const percentText = document.createElement('span');
           percentText.style.fontSize = '12px';
           percentText.style.color = 'var(--muted)';
-          percentText.style.marginLeft = 'auto';
+          percentText.style.marginLeft = '4px';
           percentText.style.fontWeight = '400';
           percentText.textContent = skillsData.data[index] + '%';
           
