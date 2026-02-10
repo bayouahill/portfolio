@@ -6,6 +6,7 @@
   <title>Projects — Alex Hill</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
   <header class="container header">
@@ -26,13 +27,7 @@
           </svg>
         </a>
         <div class="dropdown-menu">
-          <a href="projects.html?filter=all">All Projects</a>
-          <a href="projects.html?filter=presentation">Presentation</a>
-          <a href="projects.html?filter=tableau">Tableau</a>
-          <a href="projects.html?filter=analytics">Analytics</a>
-          <a href="projects.html?filter=gis">GIS</a>
-          <a href="projects.html?filter=python">Python</a>
-          <a href="projects.html?filter=javascript">JavaScript</a>
+          <a href="projects.html">All Projects</a>
         </div>
       </div>
     </nav>
@@ -56,28 +51,28 @@
   <main class="container">
     <div class="card" style="margin-top: 60px;">
       <h2 style="margin-top:0; font-size: 40px;"> Projects</h2>
-      <br>
-
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-        <input id="searchInput" data-filter-input type="search" placeholder="search projects" style="padding:10px;border-radius:8px;background:transparent;border:1px solid var(--border);color:var(--muted);width:60%;min-width:200px;font-size:14px" />
-        <div style="color:var(--muted);font-size:14px" id="projectCount">Showing 4</div>
+      
+      <!-- Skills Donut Chart -->
+      <div style="margin:24px 0">
+        <h3 style="margin:0 0 16px 0;font-size:16px;font-weight:600;color:var(--text)">Skills Distribution <span id="activeFilterText" style="color:var(--muted);font-size:14px;font-weight:400"></span></h3>
+        <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center">
+          <div style="width:180px;height:180px;flex-shrink:0">
+            <canvas id="skillsChart"></canvas>
+          </div>
+          <div id="chartLegend" style="flex:1;min-width:200px;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px;font-size:12px"></div>
+        </div>
       </div>
 
-      <div class="filter-tags" id="filterTags">
-        <button class="filter-tag active" data-tech="all">All</button>
-        <button class="filter-tag" data-tech="presentation">Presentation</button>
-        <button class="filter-tag" data-tech="tableau">Tableau</button>
-        <button class="filter-tag" data-tech="analytics">Analytics</button>
-        <button class="filter-tag" data-tech="gis">GIS</button>
-        <button class="filter-tag" data-tech="python">Python</button>
-        <button class="filter-tag" data-tech="javascript">JavaScript</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+        <input id="searchInput" data-filter-input type="search" placeholder="search projects" style="padding:10px;border-radius:8px;background:transparent;border:1px solid var(--border);color:var(--muted);flex:1;min-width:200px;font-size:14px" />
+        <div style="color:var(--muted);font-size:14px" id="projectCount">Showing 6</div>
       </div>
 
       <div class="grid">
         <!-- Company EDA & Tableau Dashboards -->
         <a href="projects/ellarises-eda-and-dashboard.html" class="project-link">
           <article class="project card" data-tech="presentation,tableau,analytics">
-            <div class="project-icon" style="background:linear-gradient(135deg, #4b5563 0%, #6b7280 100%);">
+            <div class="project-icon" style="background:linear-gradient(135deg, #6B7C8F 0%, #3E8C8C 100%);">
               <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="14" rx="2" ry="2"></rect>
                 <path d="M9 14l2-3 2 2 3-4"></path>
@@ -100,7 +95,7 @@
         <!-- Marriott Case Competition - Research -->
         <a href="projects/marriottcasecomp.html" class="project-link">
           <article class="project card" data-tech="presentation,tableau">
-            <div class="project-icon" style="background:linear-gradient(135deg, #6fa89f 0%, #78b5b5 100%);">
+            <div class="project-icon" style="background:linear-gradient(135deg, #5B7DB8 0%, #3E8C8C 100%);">
               <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="20" x2="18" y2="10"></line>
                 <line x1="12" y1="20" x2="12" y2="4"></line>
@@ -122,7 +117,7 @@
         <!-- Utah County Hazard Map -->
         <a href="projects/utahcounty-hazardassesment.html" class="project-link">
           <article class="project card" data-tech="gis,python,javascript">
-            <div class="project-icon" style="background:linear-gradient(135deg, #3a4f45 0%, #4a5d6a 100%);">
+            <div class="project-icon" style="background:linear-gradient(135deg, #1F3D2B 0%, #6B7C8F 100%);">
               <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
                 <line x1="8" y1="2" x2="8" y2="18"></line>
@@ -143,7 +138,7 @@
         <!-- Ames Iowa Housing Analysis -->
         <a href="projects/Ames-Iowa-erd.html" class="project-link">
           <article class="project card" data-tech="python,analytics">
-            <div class="project-icon" style="background:linear-gradient(135deg, #5a7d7a 0%, #78b5b5 100%);">
+            <div class="project-icon" style="background:linear-gradient(135deg, #3E8C8C 0%, #5B7DB8 100%);">
               <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="3"></circle>
                 <path d="M12 1v6m0 6v6m5.196-15.804l-4.243 4.243m0 6.364l4.243 4.243M23 12h-6m-6 0H1m15.804-5.196l-4.243 4.243m0 6.364l4.243 4.243"></path>
@@ -156,6 +151,55 @@
               <div style="margin-top:10px">
                 <span class="badge">Python</span>
                 <span class="badge">Analytics</span>
+              </div>
+            </div>
+          </article>
+        </a>
+
+        <!-- Ella Rises Website -->
+        <a href="projects/ellarises_website.html" class="project-link">
+          <article class="project card" data-tech="javascript">
+            <div class="project-icon" style="background:linear-gradient(135deg, #5B7DB8 0%, #6B7C8F 100%);">
+              <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pmeta">Web Application</div>
+              <h3 style="margin:0 0 8px 0">Ella Rises Website</h3>
+              <p style="margin:0;color:var(--muted)">Full-stack web application built with Express.js, EJS, and PostgreSQL for managing organization information and participants.</p>
+              <div style="margin-top:10px">
+                <span class="badge">JavaScript</span>
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">EJS</span>
+                <span class="badge">SQL</span>
+                <span class="badge">Cloud Computing</span>
+                <span class="badge">node.js</span>
+              </div>
+            </div>
+          </article>
+        </a>
+
+        <!-- C# Hobby Project -->
+        <a href="projects/hobby_csharp.html" class="project-link">
+          <article class="project card" data-tech="csharp">
+            <div class="project-icon" style="background:linear-gradient(135deg, #5B7DB8 0%, #6B7C8F 100%);">
+              <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <path d="M9 9h6v6H9z"></path>
+                <path d="M9 3v6M15 3v6M9 15v6M15 15v6M3 9h6M15 9h6M3 15h6M15 15h6"></path>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pmeta">Hobby Project</div>
+              <h3 style="margin:0 0 8px 0">C# M5 Assignment</h3>
+              <p style="margin:0;color:var(--muted)">Personal C# project exploring object-oriented programming concepts and application development.</p>
+              <div style="margin-top:10px">
+                <span class="badge">C#</span>
+                <span class="badge">.NET</span>
               </div>
             </div>
           </article>
@@ -202,26 +246,11 @@
   </footer>
 
   <script>
-    const filterTags = document.querySelectorAll('.filter-tag');
     const projects = document.querySelectorAll('.project');
     const projectGrid = document.querySelector('.grid');
     const searchInput = document.getElementById('searchInput');
     const projectCount = document.getElementById('projectCount');
-    let activeFilter = 'all';
-
-    // Check URL parameter for filter
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlFilter = urlParams.get('filter');
-    if (urlFilter) {
-      activeFilter = urlFilter;
-      // Update the active filter tag
-      filterTags.forEach(tag => {
-        tag.classList.remove('active');
-        if (tag.getAttribute('data-tech') === urlFilter) {
-          tag.classList.add('active');
-        }
-      });
-    }
+    let activeSkillFilter = null;
 
     function updateProjectCount() {
       const visibleProjects = document.querySelectorAll('.project:not(.hidden)').length;
@@ -235,14 +264,20 @@
       const hiddenLinks = [];
 
       projects.forEach(project => {
-        const techData = project.getAttribute('data-tech').toLowerCase();
         const projectText = project.textContent.toLowerCase();
         const link = project.closest('.project-link');
         
-        const matchesTech = activeFilter === 'all' || techData.includes(activeFilter);
+        // Check if project has the active skill filter badge
+        let matchesSkill = true;
+        if (activeSkillFilter) {
+          const projectBadges = Array.from(project.querySelectorAll('.badge'))
+            .map(badge => badge.textContent.trim().toLowerCase());
+          matchesSkill = projectBadges.includes(activeSkillFilter.toLowerCase());
+        }
+        
         const matchesSearch = projectText.includes(searchTerm);
         
-        if (matchesTech && matchesSearch) {
+        if (matchesSearch && matchesSkill) {
           project.classList.remove('hidden');
           if (link) visibleLinks.push(link);
         } else {
@@ -261,20 +296,185 @@
       updateProjectCount();
     }
 
-    filterTags.forEach(tag => {
-      tag.addEventListener('click', () => {
-        filterTags.forEach(t => t.classList.remove('active'));
-        tag.classList.add('active');
-        activeFilter = tag.getAttribute('data-tech');
-        filterProjects();
-      });
-    });
+    function setSkillFilter(skill) {
+      if (activeSkillFilter === skill) {
+        // Toggle off if clicking the same skill
+        activeSkillFilter = null;
+        document.getElementById('activeFilterText').textContent = '';
+      } else {
+        activeSkillFilter = skill;
+        document.getElementById('activeFilterText').textContent = `(Filtered by: ${skill})`;
+      }
+      filterProjects();
+    }
 
     searchInput.addEventListener('input', filterProjects);
 
-    // Apply initial filter from URL
+    // Apply initial filter
     filterProjects();
     updateProjectCount();
+
+    // Skills Donut Chart - Dynamically extract badges from project cards
+    function extractBadgesFromProjects() {
+      const badgeCounts = {};
+      const badges = document.querySelectorAll('.badge');
+      
+      badges.forEach(badge => {
+        const skill = badge.textContent.trim();
+        badgeCounts[skill] = (badgeCounts[skill] || 0) + 1;
+      });
+      
+      // Sort by count (descending) and convert to arrays
+      const sortedSkills = Object.entries(badgeCounts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([skill, count]) => ({ skill, count }));
+      
+      const totalCount = sortedSkills.reduce((sum, item) => sum + item.count, 0);
+      
+      // Generate muted color palette
+      const mutedColors = [
+        'rgba(91, 125, 184, 0.7)',   // Alpine blue
+        'rgba(107, 124, 143, 0.7)',  // Slate blue-gray
+        'rgba(62, 140, 140, 0.7)',   // Cool teal
+        'rgba(31, 61, 43, 0.7)',     // Deep pine green
+        'rgba(138, 143, 148, 0.7)',  // Muted gray
+        'rgba(91, 125, 184, 0.6)',   // Alpine blue lighter
+        'rgba(107, 124, 143, 0.6)',  // Slate lighter
+        'rgba(62, 140, 140, 0.6)',   // Teal lighter
+        'rgba(230, 160, 122, 0.7)',  // Desert peach
+        'rgba(201, 106, 58, 0.7)',   // Sandstone orange
+        'rgba(158, 75, 47, 0.7)',    // Burnt clay
+        'rgba(91, 125, 184, 0.5)'    // Alpine blue very light
+      ];
+      
+      const mutedBorderColors = [
+        '#5B7DB8',  // Alpine blue
+        '#6B7C8F',  // Slate blue-gray
+        '#3E8C8C',  // Cool teal
+        '#1F3D2B',  // Deep pine green
+        '#8A8F94',  // Muted gray
+        '#5B7DB8',  // Alpine blue
+        '#6B7C8F',  // Slate
+        '#3E8C8C',  // Teal
+        '#E6A07A',  // Desert peach
+        '#C96A3A',  // Sandstone orange
+        '#9E4B2F',  // Burnt clay
+        '#5B7DB8'   // Alpine blue
+      ];
+      
+      return {
+        labels: sortedSkills.map(item => item.skill),
+        data: sortedSkills.map(item => Math.round((item.count / totalCount) * 100)),
+        colors: sortedSkills.map((_, index) => mutedColors[index % mutedColors.length]),
+        borderColors: sortedSkills.map((_, index) => mutedBorderColors[index % mutedBorderColors.length])
+      };
+    }
+    
+    const skillsData = extractBadgesFromProjects();
+
+    const ctx = document.getElementById('skillsChart');
+    if (ctx) {
+      const skillsChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: skillsData.labels,
+          datasets: [{
+            data: skillsData.data,
+            backgroundColor: skillsData.colors,
+            borderColor: skillsData.borderColors,
+            borderWidth: 2,
+            cutout: '70%' // Makes it a skinny donut
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          onClick: (event, elements) => {
+            if (elements.length > 0) {
+              const clickedIndex = elements[0].index;
+              const clickedSkill = skillsData.labels[clickedIndex];
+              setSkillFilter(clickedSkill);
+            }
+          },
+          plugins: {
+            legend: {
+              display: false // We'll create custom legend
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.label + ': ' + context.parsed + '%';
+                }
+              }
+            }
+          },
+          animation: {
+            animateRotate: true,
+            duration: 1000
+          }
+        }
+      });
+
+      // Create custom legend
+      const legendContainer = document.getElementById('chartLegend');
+      if (legendContainer) {
+        skillsData.labels.forEach((label, index) => {
+          const legendItem = document.createElement('div');
+          legendItem.style.display = 'flex';
+          legendItem.style.alignItems = 'center';
+          legendItem.style.gap = '8px';
+          legendItem.style.padding = '4px 0';
+          legendItem.style.cursor = 'pointer';
+          legendItem.style.transition = 'opacity 0.2s';
+          
+          const colorBox = document.createElement('div');
+          colorBox.style.width = '12px';
+          colorBox.style.height = '12px';
+          colorBox.style.borderRadius = '3px';
+          colorBox.style.backgroundColor = skillsData.borderColors[index];
+          colorBox.style.flexShrink = '0';
+          
+          const labelText = document.createElement('span');
+          labelText.style.fontSize = '12px';
+          labelText.style.color = 'var(--text)';
+          labelText.style.fontWeight = '400';
+          labelText.textContent = label;
+          
+          const percentText = document.createElement('span');
+          percentText.style.fontSize = '12px';
+          percentText.style.color = 'var(--muted)';
+          percentText.style.marginLeft = 'auto';
+          percentText.style.fontWeight = '400';
+          percentText.textContent = skillsData.data[index] + '%';
+          
+          legendItem.appendChild(colorBox);
+          legendItem.appendChild(labelText);
+          legendItem.appendChild(percentText);
+          
+          // Add click handler to filter by skill
+          legendItem.addEventListener('click', function() {
+            setSkillFilter(label);
+          });
+          
+          // Add hover effect
+          legendItem.addEventListener('mouseenter', function() {
+            legendItem.style.opacity = '0.7';
+            skillsChart.setActiveElements([{datasetIndex: 0, index: index}]);
+            skillsChart.update();
+          });
+          
+          legendItem.addEventListener('mouseleave', function() {
+            legendItem.style.opacity = '1';
+            if (activeSkillFilter !== label) {
+              skillsChart.setActiveElements([]);
+              skillsChart.update();
+            }
+          });
+          
+          legendContainer.appendChild(legendItem);
+        });
+      }
+    }
 
     // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -295,6 +495,33 @@
     document.querySelectorAll('.mobile-nav a').forEach(link => {
       link.addEventListener('click', toggleMobileMenu);
     });
+
+    // Scroll-based background fade effect
+    (function() {
+      const body = document.body;
+      if (!body) return;
+
+      function updateBackgroundFade() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const fadeStart = windowHeight * 0.5;
+        const fadeEnd = windowHeight * 2;
+
+        if (scrollY > fadeStart) {
+          body.classList.add('scrolled');
+          if (scrollY > fadeEnd) {
+            body.classList.add('scrolled-far');
+          } else {
+            body.classList.remove('scrolled-far');
+          }
+        } else {
+          body.classList.remove('scrolled', 'scrolled-far');
+        }
+      }
+
+      window.addEventListener('scroll', updateBackgroundFade);
+      updateBackgroundFade();
+    })();
   </script>
 </body>
 </html>

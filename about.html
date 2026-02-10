@@ -26,12 +26,7 @@
           </svg>
         </a>
         <div class="dropdown-menu">
-          <a href="projects.html?filter=all">All Projects</a>
-          <a href="projects.html?filter=presentation">Presentation</a>
-          <a href="projects.html?filter=tableau">Tableau</a>
-          <a href="projects.html?filter=gis">GIS</a>
-          <a href="projects.html?filter=python">Python</a>
-          <a href="projects.html?filter=javascript">JavaScript</a>
+          <a href="projects.html">All Projects</a>
         </div>
       </div>
     </nav>
@@ -192,6 +187,33 @@
     document.querySelectorAll('.mobile-nav a').forEach(link => {
       link.addEventListener('click', toggleMobileMenu);
     });
+
+    // Scroll-based background fade effect
+    (function() {
+      const body = document.body;
+      if (!body) return;
+
+      function updateBackgroundFade() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const fadeStart = windowHeight * 0.5;
+        const fadeEnd = windowHeight * 2;
+
+        if (scrollY > fadeStart) {
+          body.classList.add('scrolled');
+          if (scrollY > fadeEnd) {
+            body.classList.add('scrolled-far');
+          } else {
+            body.classList.remove('scrolled-far');
+          }
+        } else {
+          body.classList.remove('scrolled', 'scrolled-far');
+        }
+      }
+
+      window.addEventListener('scroll', updateBackgroundFade);
+      updateBackgroundFade();
+    })();
   </script>
 </body>
 </html>

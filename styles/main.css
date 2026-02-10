@@ -1,40 +1,37 @@
 /* ============================================================================
-   COLOR PALETTE - BANFF-INSPIRED OUTDOOR THEME
+   COLOR PALETTE - ALPINE → CANYON AESTHETIC
    ============================================================================
    
    PRIMARY COLORS
    ──────────────────────────────────────────────────────────────────────────
-   Accent (Teal)     #6fa89f  ████  Main brand color, buttons, highlights
-   Forest (Green)    #3a4f45  ████  Dark accents, hover states
-   Mountain (Blue)   #4a5d6a  ████  Project cards, secondary elements
+   Primary (Alpine Blue)    #5B7DB8  ████  Main brand color, primary elements
+   Dark (Deep Pine Green)   #1F3D2B  ████  Dark sections, nav, footer
+   
+   SECONDARY UI COLORS
+   ──────────────────────────────────────────────────────────────────────────
+   Slate Blue-Gray          #6B7C8F  ████  Secondary UI elements
+   Cool Teal                #3E8C8C  ████  Secondary UI elements
+   
+   CTA & ACCENT COLORS (Use Sparingly)
+   ──────────────────────────────────────────────────────────────────────────
+   Sandstone Orange         #C96A3A  ████  Primary CTA buttons
+   Burnt Clay               #9E4B2F  ████  CTA hover/emphasis
+   Desert Peach             #E6A07A  ████  Soft accents
    
    NEUTRALS
    ──────────────────────────────────────────────────────────────────────────
-   Text (Dark)       #1c2b2d  ████  Primary text color
-   Muted (Gray)      #5a6562  ████  Secondary text, labels
-   Background        #fafbfa  ████  Page background
-   Card (White)      #ffffff  ████  Card backgrounds
-   Border            #e1e5e3  ████  Subtle borders and dividers
-   
-   GRADIENTS (Project Card Backgrounds)
-   ──────────────────────────────────────────────────────────────────────────
-   Teal Gradient     #6fa89f → #78b5b5  (Presentation/Tableau projects)
-   Forest Gradient   #3a4f45 → #4a5d6a  (GIS/Mapping projects)
-   Aqua Gradient     #5a7d7a → #78b5b5  (Python/Data projects)
-   
-   ACCENT COLORS
-   ──────────────────────────────────────────────────────────────────────────
-   Lake (Light Teal) #78b5b5  ████  Lighter teal accents
-   Sky (Light Blue)  #8fa5b3  ████  Soft blue accents
-   Earth (Brown)     #8b7355  ████  Warm earth tones
-   Secondary (Tan)   #c89860  ████  Warm accents
+   Background (Off-White)   #F5F2EE  ████  Page background
+   Text (Charcoal)          #2B2F33  ████  Primary text color
+   Muted Gray               #8A8F94  ████  Secondary text, labels
+   Card (White)             #ffffff  ████  Card backgrounds
+   Border                   #E1E5E3  ████  Subtle borders and dividers
    
    USAGE NOTES
    ──────────────────────────────────────────────────────────────────────────
-   • Accent color for CTAs, active states, and primary actions
-   • Forest/Mountain for project category differentiation
-   • Muted for secondary text (metadata, timestamps, captions)
-   • Border for subtle separations (cards, sections)
+   • Warm accent colors (orange, clay, peach) for CTAs and highlights only
+   • Cool tones (blue, teal, slate, green) for structure and layout
+   • Increased contrast and spacing for readability
+   • Natural, premium, calm aesthetic - not overly saturated
    
 ============================================================================ */
 
@@ -43,22 +40,29 @@
    =================================== */
 :root {
   /* Primary Colors */
-  --accent: #6fa89f;      /* Teal - Main brand color */
-  --forest: #3a4f45;      /* Dark green - Hover states */
-  --mountain: #4a5d6a;    /* Blue-gray - Secondary elements */
+  --primary: #5B7DB8;      /* Alpine blue - Main brand color */
+  --dark: #1F3D2B;         /* Deep pine green - Dark sections, nav, footer */
+  
+  /* Secondary UI Colors */
+  --slate: #6B7C8F;        /* Slate blue-gray - Secondary UI */
+  --teal: #3E8C8C;         /* Cool teal - Secondary UI */
+  
+  /* CTA & Accent Colors (Use Sparingly) */
+  --cta: #C96A3A;          /* Sandstone orange - Primary CTA buttons */
+  --cta-hover: #9E4B2F;    /* Burnt clay - CTA hover/emphasis */
+  --accent-soft: #E6A07A;  /* Desert peach - Soft accents */
   
   /* Neutrals */
-  --text: #1c2b2d;        /* Primary text */
-  --muted: #5a6562;       /* Secondary text */
-  --bg: #fafbfa;          /* Page background */
-  --card: #ffffff;        /* Card background */
-  --border: #e1e5e3;      /* Borders and dividers */
+  --text: #2B2F33;         /* Charcoal - Primary text */
+  --muted: #8A8F94;        /* Muted gray - Secondary text */
+  --bg: #F5F2EE;           /* Off-white - Page background */
+  --card: #ffffff;         /* White - Card background */
+  --border: #E1E5E3;       /* Light gray - Borders and dividers */
   
-  /* Accent Variations */
-  --lake: #78b5b5;        /* Light teal */
-  --sky: #8fa5b3;         /* Light blue */
-  --earth: #8b7355;       /* Earth brown */
-  --secondary: #c89860;   /* Warm tan */
+  /* Legacy support (mapped to new colors) */
+  --accent: var(--primary);   /* For backward compatibility */
+  --forest: var(--dark);    /* For backward compatibility */
+  --mountain: var(--slate); /* For backward compatibility */
   
   /* Layout */
   --max-width: 1280px;
@@ -88,7 +92,7 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  line-height: 1.7;
   font-weight: 400;
   overflow-x: hidden;
   width: 100%;
@@ -123,6 +127,24 @@ iframe {
   height: 200vh; /* shorter hero */
 }
 
+/* Alpine gradient fade at top of hero */
+.photo-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    180deg,
+    rgba(91, 125, 184, 0.12) 0%,
+    rgba(62, 140, 140, 0.06) 30%,
+    transparent 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
 .photo-container {
   position: sticky;
   top: 0;
@@ -146,11 +168,24 @@ iframe {
   opacity: 1;
 }
 
+.photo-slide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(91, 125, 184, 0.25) 0%, rgba(62, 140, 140, 0.15) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .photo-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: brightness(0.85) contrast(1.1);
 }
 
 /* Overlay text on photos */
@@ -162,7 +197,8 @@ iframe {
   text-align: center;
   color: white;
   z-index: 10;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.8), 0 4px 30px rgba(0,0,0,0.5);
+  filter: drop-shadow(0 0 20px rgba(0,0,0,0.3));
 }
 
 .photo-overlay h1 {
@@ -217,7 +253,7 @@ iframe {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 48px;
 }
 
 /* ===================================
@@ -227,11 +263,28 @@ iframe {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 0;
+  padding: 28px 0;
   border-bottom: 1px solid var(--border);
   background: var(--bg);
   position: relative;
   z-index: 100;
+}
+
+/* Subtle alpine gradient fade at top of header */
+.header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(91, 125, 184, 0.08) 0%,
+    rgba(62, 140, 140, 0.04) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .brand {
@@ -361,8 +414,8 @@ iframe {
 
 .dropdown-menu a:hover {
   background: var(--bg);
-  border-left-color: var(--accent);
-  color: var(--accent);
+  border-left-color: var(--primary);
+  color: var(--primary);
 }
 
 .dropdown-menu a::after {
@@ -386,6 +439,64 @@ iframe {
   z-index: 5;
 }
 
+/* Scroll-fading nature background - works on all pages */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: 
+    linear-gradient(135deg, rgba(91, 125, 184, 0.2) 0%, rgba(62, 140, 140, 0.1) 100%),
+    url('../images/zions_2025.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -2;
+  pointer-events: none;
+  filter: brightness(0.6) contrast(0.85) blur(3px);
+}
+
+/* Cool alpine overlay to harmonize background with palette */
+body.scrolled::after {
+  opacity: 0.12;
+}
+
+body.scrolled-far::after {
+  opacity: 0.04;
+}
+
+/* Subtle sandstone texture pattern for lower sections */
+.main-content::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(201, 106, 58, 0.02) 2px,
+      rgba(201, 106, 58, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(230, 160, 122, 0.015) 2px,
+      rgba(230, 160, 122, 0.015) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
 /* ===================================
    HERO SECTION (with interactive viz)
    =================================== */
@@ -395,12 +506,33 @@ iframe {
   gap: 64px;
   align-items: stretch;
   padding: 80px 0 64px;
+  position: relative;
+}
+
+/* Subtle alpine gradient accent on hero section */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(91, 125, 184, 0.06) 0%,
+    rgba(62, 140, 140, 0.03) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero .card {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 /* About page hero pairing */
@@ -431,10 +563,10 @@ iframe {
 
 .lead {
   color: var(--muted);
-  margin: 0 0 32px 0;
+  margin: 0 0 36px 0;
   font-size: 20px;
-  line-height: 1.7;
-  max-width: 480px;
+  line-height: 1.8;
+  max-width: 520px;
 }
 
 .leadlist {
@@ -451,6 +583,26 @@ iframe {
 .section-header {
   text-align: center;
   padding: 100px 0 60px 0;
+  position: relative;
+}
+
+/* Subtle sandstone divider above section headers */
+.section-header::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 106, 58, 0.3),
+    rgba(230, 160, 122, 0.2),
+    rgba(201, 106, 58, 0.3),
+    transparent
+  );
 }
 
 .section-header h2 {
@@ -474,8 +626,35 @@ iframe {
   background: var(--card);
   border: 1px solid var(--border);
   padding: 40px;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Subtle sandstone accent on cards (exclude project cards which have their own styling) */
+.card:not(.project)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(230, 160, 122, 0.03) 50%,
+    rgba(201, 106, 58, 0.02) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .cta-row {
@@ -489,8 +668,8 @@ iframe {
   align-items: center;
   justify-content: center;
   padding: 14px 32px;
-  background: var(--text);
-  color: var(--bg);
+  background: var(--cta);
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
@@ -503,27 +682,27 @@ iframe {
 }
 
 .btn:hover {
-  background: var(--accent);
+  background: var(--cta-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(111, 168, 159, 0.4);
+  box-shadow: 0 6px 20px rgba(201, 106, 58, 0.4);
 }
 
 .btn:active {
   transform: translateY(0px);
-  box-shadow: 0 2px 8px rgba(111, 168, 159, 0.3);
+  box-shadow: 0 2px 8px rgba(201, 106, 58, 0.3);
 }
 
 .btn-accent {
-  background: var(--accent) !important;
-  border: 1px solid var(--accent) !important;
-  color: var(--bg) !important;
+  background: var(--primary) !important;
+  border: 1px solid var(--primary) !important;
+  color: #ffffff !important;
 }
 
 .btn-accent:hover {
-  background: var(--forest) !important;
-  border-color: var(--forest) !important;
+  background: var(--teal) !important;
+  border-color: var(--teal) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(58, 79, 69, 0.4);
+  box-shadow: 0 6px 20px rgba(62, 140, 140, 0.4);
 }
 
 .btn-outline {
@@ -533,24 +712,24 @@ iframe {
 }
 
 .btn-outline:hover {
-  background: var(--accent) !important;
-  color: var(--bg) !important;
-  border-color: var(--accent) !important;
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(111, 168, 159, 0.4);
+  box-shadow: 0 6px 20px rgba(91, 125, 184, 0.4);
 }
 
 .btn-dark {
-  background: var(--forest) !important;
-  border: 1px solid var(--forest) !important;
-  color: var(--bg) !important;
+  background: var(--dark) !important;
+  border: 1px solid var(--dark) !important;
+  color: #ffffff !important;
 }
 
 .btn-dark:hover {
-  background: var(--mountain) !important;
-  border-color: var(--mountain) !important;
+  background: var(--slate) !important;
+  border-color: var(--slate) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(58, 79, 69, 0.4);
+  box-shadow: 0 6px 20px rgba(107, 124, 143, 0.4);
 }
 
 /* ===================================
@@ -580,6 +759,31 @@ iframe {
   border-radius: 12px;
 }
 
+/* Subtle sandstone accent on project cards (before hover) */
+.project::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 160, 122, 0.15),
+    rgba(201, 106, 58, 0.1),
+    rgba(230, 160, 122, 0.15),
+    transparent
+  );
+  z-index: 0;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.project:hover::after {
+  opacity: 0;
+}
+
 /* PROJECT HOVER EFFECTS */
 .project::before {
   content: '';
@@ -602,7 +806,7 @@ iframe {
 .project:hover {
   border-color: transparent;
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(111, 168, 159, 0.4);
+  box-shadow: 0 12px 40px rgba(91, 125, 184, 0.3);
 }
 
 .project:hover::before {
@@ -611,23 +815,40 @@ iframe {
 
 /* Different gradient backgrounds for each project card on hover */
 .project[data-tech*="presentation"]::before {
-  background: linear-gradient(135deg, #6fa89f 0%, #78b5b5 100%);
+  background: linear-gradient(135deg, #5B7DB8 0%, #3E8C8C 100%);
 }
 
 .project[data-tech*="gis"]::before {
-  background: linear-gradient(135deg, #3a4f45 0%, #4a5d6a 100%);
+  background: linear-gradient(135deg, #1F3D2B 0%, #6B7C8F 100%);
 }
 
 .project[data-tech*="python"]:not([data-tech*="gis"])::before {
-  background: linear-gradient(135deg, #5a7d7a 0%, #78b5b5 100%);
+  background: linear-gradient(135deg, #3E8C8C 0%, #5B7DB8 100%);
 }
 
-/* Ellarises tile: use gray gradient and shadow on hover */
+.project[data-tech*="javascript"]::before {
+  background: linear-gradient(135deg, #5B7DB8 0%, #6B7C8F 100%);
+}
+.project[data-tech*="javascript"]:hover {
+  box-shadow: 0 12px 40px rgba(91, 125, 184, 0.3);
+}
+
+.project[data-tech*="csharp"]::before {
+  background: linear-gradient(135deg, #5B7DB8 0%, #3E8C8C 100%);
+}
+.project[data-tech*="csharp"]:hover {
+  box-shadow: 0 12px 40px rgba(91, 125, 184, 0.3);
+}
+.project[data-tech*="csharp"]:hover .project-icon svg {
+  stroke: #5B7DB8 !important;
+}
+
+/* Ellarises tile: use slate gradient and shadow on hover */
 .project-link[href*="ellarises-eda-and-dashboard"] .project::before {
-  background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%) !important;
+  background: linear-gradient(135deg, #6B7C8F 0%, #3E8C8C 100%) !important;
 }
 .project-link[href*="ellarises-eda-and-dashboard"] .project:hover {
-  box-shadow: 0 12px 40px rgba(75, 85, 99, 0.35) !important;
+  box-shadow: 0 12px 40px rgba(107, 124, 143, 0.35) !important;
 }
 
 .project:hover .pmeta,
@@ -664,7 +885,7 @@ iframe {
   background: white !important;
 }
 .project-link[href*="ellarises-eda-and-dashboard"]:hover .project-icon svg {
-  stroke: #4b5563 !important;
+  stroke: #6B7C8F !important;
 }
 
 /* Icon colors */
@@ -672,21 +893,27 @@ iframe {
   stroke: white !important;
 }
 .project[data-tech*="gis"]:hover .project-icon svg {
-  stroke: #4b5563 !important;
+  stroke: #6B7C8F !important;
 }
 .project[data-tech*="presentation"]:hover .project-icon svg {
-  stroke: #6fa89f !important;
+  stroke: #5B7DB8 !important;
 }
 .project[data-tech*="python"]:not([data-tech*="gis"]):hover .project-icon svg {
-  stroke: #4b5563 !important;
+  stroke: #3E8C8C !important;
+}
+.project[data-tech*="javascript"]:hover .project-icon svg {
+  stroke: #5B7DB8 !important;
+}
+.project[data-tech*="csharp"]:hover .project-icon svg {
+  stroke: #5B7DB8 !important;
 }
 
-/* Ellarises override: keep icon gray on hover */
+/* Ellarises override: keep icon slate on hover */
 .project-link[href*="ellarises-eda-and-dashboard"]:hover .project-icon {
   background: white !important;
 }
 .project-link[href*="ellarises-eda-and-dashboard"]:hover .project-icon svg {
-  stroke: #4b5563 !important;
+  stroke: #6B7C8F !important;
 }
 
 
@@ -698,11 +925,11 @@ iframe {
 }
 
 .project .pbody {
-  padding: 24px;
+  padding: 28px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .pmeta {
@@ -776,18 +1003,18 @@ iframe {
 }
 
 .filter-tag:hover {
-  background: var(--accent);
+  background: var(--primary);
   color: white;
-  border-color: var(--accent);
+  border-color: var(--primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(111, 168, 159, 0.3);
+  box-shadow: 0 4px 12px rgba(91, 125, 184, 0.3);
 }
 
 .filter-tag.active {
-  background: var(--accent);
+  background: var(--primary);
   color: white;
-  border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(111, 168, 159, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(91, 125, 184, 0.2);
 }
 
 .project.hidden {
@@ -832,9 +1059,42 @@ iframe {
 .footer {
   margin-top: 60px;
   padding: 48px 0 32px 0;
-  background: var(--forest);
+  background: var(--dark);
   border-top: none;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle sandstone texture overlay on footer */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(201, 106, 58, 0.03) 3px,
+      rgba(201, 106, 58, 0.03) 6px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(230, 160, 122, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.footer .container {
+  position: relative;
+  z-index: 1;
 }
 
 .footer-content {
@@ -843,7 +1103,7 @@ iframe {
   align-items: center;
   gap: 48px;
   padding-bottom: 32px;
-  border-bottom: 1px solid rgba(250, 251, 250, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer-left {
@@ -855,17 +1115,17 @@ iframe {
 .footer-heading {
   font-size: 18px;
   font-weight: 600;
-  color: var(--bg);
+  color: #ffffff;
   margin: 0;
   letter-spacing: 0.3px;
 }
 
 .footer-subtitle {
-  color: rgba(250, 251, 250, 0.65);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 13px;
   margin: 0;
   max-width: 380px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .footer-right {
@@ -881,7 +1141,7 @@ iframe {
 }
 
 .footer-buttons a {
-  color: var(--bg);
+  color: #ffffff;
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
@@ -892,8 +1152,8 @@ iframe {
 }
 
 .footer-buttons a:hover {
-  color: rgba(250, 251, 250, 1);
-  border-bottom-color: var(--bg);
+  color: rgba(255, 255, 255, 1);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-social {
@@ -908,17 +1168,17 @@ iframe {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(250, 251, 250, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   transition: all 0.3s ease;
-  color: var(--bg);
-  border: 1.5px solid rgba(250, 251, 250, 0.12);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer-social a:hover {
-  background: var(--bg);
-  color: var(--forest);
-  border-color: var(--bg);
+  background: var(--accent-soft);
+  color: var(--dark);
+  border-color: var(--accent-soft);
   transform: translateY(-2px);
 }
 
@@ -936,13 +1196,13 @@ iframe {
 }
 
 .footer-copyright {
-  color: rgba(250, 251, 250, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 12px;
   letter-spacing: 0.3px;
 }
 
 .footer-credit {
-  color: rgba(250, 251, 250, 0.5);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 11px;
 }
 
@@ -1103,7 +1363,7 @@ iframe {
 
   .mobile-nav a:hover,
   .mobile-nav a.active {
-    color: var(--accent);
+    color: var(--primary);
   }
 
   /* Mobile nav overlay */
